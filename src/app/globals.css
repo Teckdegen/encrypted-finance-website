@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #e5e0d8;
-  --accent: #e5e0d8;
-  --accent-dim: #c5bba8;
-  --surface: #0a0a0a;
-  --surface-light: #141414;
-  --border: #222222;
+  --background: #e5e0d8;
+  --foreground: #000000;
+  --accent: #000000;
+  --accent-dim: #333333;
+  --surface: #d8d2c8;
+  --surface-light: #f0ebe2;
+  --border: #c8bfaa;
 }
 
 @theme inline {
@@ -44,11 +44,11 @@ html {
 
 /* Glow effect for accent elements */
 .glow {
-  box-shadow: 0 0 20px rgba(229, 224, 216, 0.3), 0 0 60px rgba(229, 224, 216, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 0 60px rgba(0, 0, 0, 0.05);
 }
 
 .glow-text {
-  text-shadow: 0 0 20px rgba(229, 224, 216, 0.5);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Gradient border effect */
@@ -73,7 +73,7 @@ html {
 /* Animated background grid */
 .bg-grid {
   background-image: 
-    linear-gradient(rgba(229, 224, 216, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(229, 224, 216, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
