@@ -8,30 +8,14 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto max-w-5xl text-center mt-12">
         {/* Main headline */}
-        <h1 className="mb-6 text-5xl font-medium tracking-tight md:text-7xl lg:text-8xl text-foreground">
+        <h1 className="mb-8 text-6xl font-black italic tracking-tighter md:text-8xl lg:text-[10rem] leading-[0.85] text-foreground">
           Encrypted Layer <br />for Public Chains
         </h1>
 
         {/* Subtitle */}
-        <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-foreground/70 md:text-lg">
+        <p className="mx-auto max-w-2xl text-base leading-relaxed text-foreground/70 md:text-lg">
           Private financial infrastructure for blockchain ecosystems.
         </p>
-
-        {/* Buttons */}
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row mb-10">
-          <a
-            href="#ecosystem"
-            className="flex h-12 items-center justify-center rounded-full bg-foreground px-8 text-sm font-bold uppercase tracking-widest text-background transition-colors hover:bg-foreground/90"
-          >
-            Explore Chains
-          </a>
-          <a
-            href="#learn-more"
-            className="flex h-12 items-center justify-center rounded-full border-2 border-foreground px-8 text-sm font-bold uppercase tracking-widest text-foreground transition-colors hover:bg-foreground/10"
-          >
-            Learn More
-          </a>
-        </div>
       </div>
     </section>
   );
