@@ -76,10 +76,10 @@ export function PrivacyPhilosophy() {
             {/* Top Light Card */}
             <div className="rounded-[2.5rem] border border-foreground/10 bg-surface p-10 md:p-12 shadow-sm flex-1 flex flex-col justify-center transition-transform hover:-translate-y-1">
               <h3 className="mb-4 text-2xl font-medium text-foreground">
-                Built for Builders and Protocols
+                Designed for Every Blockchain Ecosystem
               </h3>
               <p className="text-sm leading-relaxed text-foreground/70">
-                We support teams building the next generation of financial applications with private infrastructure, ecosystem support, and access to a growing network of builders and partners across the space.
+                Encrypted Finance adapts private financial infrastructure to different blockchain environments and use cases.
               </p>
             </div>
 
