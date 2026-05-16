@@ -7,201 +7,148 @@ export const metadata: Metadata = {
 
 export default function FlarePage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a href="/" className="flex items-center gap-2">
-            <img
-              src="https://pbs.twimg.com/profile_images/2052396648999923715/s8bKFJnU_400x400.jpg"
-              alt="Logo"
-              className="h-8 w-8 rounded-full"
-            />
-            <span className="text-lg font-semibold tracking-tight">
-              Encrypted Finance
-            </span>
-          </a>
-        </div>
-      </nav>
-
-      <main className="mx-auto max-w-4xl px-6 pt-32 pb-24">
+    <div className="min-h-screen">
+      {/* Dark Hero Section */}
+      <section className="relative bg-[#0a0a0a] px-6 py-16 md:px-16 md:py-24">
         {/* Back link */}
         <a
           href="/"
-          className="mb-10 inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
+          className="mb-12 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/40 hover:text-white/70 transition-colors"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back to Home
+          ← Back
         </a>
 
-        {/* Hero */}
-        <div className="mb-24">
-          <div className="flex items-center gap-4 mb-6">
-            <img
-              src="https://pbs.twimg.com/profile_images/1635937765534707712/JgfEVRQA_400x400.jpg"
-              alt="Flare"
-              className="h-14 w-14 rounded-full"
-            />
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-              Private DeFi on Flare
-            </h1>
-          </div>
-          <p className="max-w-2xl text-lg leading-relaxed text-foreground/70">
-            One deposit. Then everything is private. Swaps, lending, staking, bridging, governance. Your wallet never shows up on-chain again.
-          </p>
-        </div>
-
-        {/* The Problem */}
-        <section className="mb-24">
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-foreground/40">
+        <div className="max-w-4xl">
+          <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-white/30">
             The Problem
           </p>
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
-            Every transfer you send on a public chain is visible to everyone. Forever.
-          </h2>
-          <p className="text-lg text-foreground/70">Until now.</p>
-        </section>
+          <h1 className="text-3xl font-bold leading-[1.1] text-white md:text-5xl lg:text-6xl">
+            Every transfer you send on a public chain
+            <br />
+            is <em className="italic text-white/60">visible to everyone.</em>
+            <br />
+            Forever.
+          </h1>
+          <p className="mt-6 text-sm text-white/40">Until now.</p>
+        </div>
+      </section>
 
-        {/* How It Works — 3 Steps */}
-        <section className="mb-24">
-          <div className="grid gap-6">
-            {/* Step 01 — Wrap */}
-            <div className="rounded-2xl border border-border/50 bg-surface-light/30 p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">01</span>
-                <h3 className="text-xl font-bold">WRAP</h3>
-              </div>
-              <p className="text-sm text-foreground/60 mb-6">Any token enters the private system.</p>
-              <div className="flex items-center gap-4 font-mono text-sm">
-                <span className="rounded-lg bg-surface px-3 py-2 text-foreground/70">100 TOKEN</span>
-                <span className="text-foreground/30">→</span>
-                <span className="rounded-lg bg-accent/10 px-3 py-2 text-accent">PRIVATE NOTE</span>
+      {/* Steps Section — Light */}
+      <section className="bg-[#f0ebe2] px-6 py-16 md:px-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {/* Step 1 — Wrap */}
+            <div className="rounded-xl border border-[#0a0a0a]/10 bg-white/60 p-6 md:p-8">
+              <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a0a0a]/40">01</p>
+              <h3 className="mb-3 text-lg font-bold text-[#0a0a0a]">WRAP</h3>
+              <p className="mb-6 text-sm text-[#0a0a0a]/50">Any token enters the private system.</p>
+              <div className="flex items-center gap-2 font-mono text-xs">
+                <span className="rounded border border-[#0a0a0a]/10 px-2 py-1">100 TOKEN</span>
+                <span className="text-[#0a0a0a]/30">→</span>
+                <span className="rounded border border-[#0a0a0a]/10 px-2 py-1">PRIVATE NOTE</span>
               </div>
             </div>
 
-            {/* Step 02 — Transact */}
-            <div className="rounded-2xl border border-border/50 bg-surface-light/30 p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">02</span>
-                <h3 className="text-xl font-bold">TRANSACT</h3>
-              </div>
-              <p className="text-sm text-foreground/60 mb-6">Send, swap, or earn. Nothing leaks.</p>
-              <div className="flex items-center gap-4 font-mono text-sm">
-                <span className="rounded-lg bg-surface px-3 py-2 text-foreground/70">▓▓▓ PRIVATE</span>
-                <span className="text-foreground/30">→</span>
-                <span className="rounded-lg bg-surface px-3 py-2 text-foreground/70">▓▓▓ PRIVATE</span>
+            {/* Step 2 — Transact */}
+            <div className="rounded-xl border border-[#0a0a0a]/10 bg-white/60 p-6 md:p-8">
+              <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a0a0a]/40">02</p>
+              <h3 className="mb-3 text-lg font-bold text-[#0a0a0a]">TRANSACT</h3>
+              <p className="mb-6 text-sm text-[#0a0a0a]/50">Send, swap, or earn. Nothing leaks.</p>
+              <div className="flex items-center gap-2 font-mono text-xs">
+                <span className="rounded border border-[#0a0a0a]/10 px-2 py-1">▓▓▓ PRIVATE</span>
+                <span className="text-[#0a0a0a]/30">→</span>
+                <span className="rounded border border-[#0a0a0a]/10 px-2 py-1">▓▓▓ PRIVATE</span>
               </div>
             </div>
 
-            {/* Step 03 — Unwrap */}
-            <div className="rounded-2xl border border-border/50 bg-surface-light/30 p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">03</span>
-                <h3 className="text-xl font-bold">UNWRAP</h3>
-              </div>
-              <p className="text-sm text-foreground/60 mb-6">Back to your token. With yield.</p>
-              <div className="flex items-center gap-4 font-mono text-sm">
-                <span className="rounded-lg bg-accent/10 px-3 py-2 text-accent">PRIVATE NOTE</span>
-                <span className="text-foreground/30">→</span>
-                <span className="rounded-lg bg-surface px-3 py-2 text-foreground/70">105 TOKEN</span>
+            {/* Step 3 — Unwrap */}
+            <div className="rounded-xl border border-[#0a0a0a]/10 bg-white/60 p-6 md:p-8">
+              <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a0a0a]/40">03</p>
+              <h3 className="mb-3 text-lg font-bold text-[#0a0a0a]">UNWRAP</h3>
+              <p className="mb-6 text-sm text-[#0a0a0a]/50">Back to your token. With yield.</p>
+              <div className="flex items-center gap-2 font-mono text-xs">
+                <span className="rounded border border-[#0a0a0a]/10 px-2 py-1">PRIVATE NOTE</span>
+                <span className="text-[#0a0a0a]/30">→</span>
+                <span className="rounded border border-[#0a0a0a]/10 px-2 py-1">105 TOKEN</span>
               </div>
             </div>
           </div>
 
-          <p className="mt-8 text-center text-xs font-bold uppercase tracking-[0.2em] text-foreground/40">
+          <p className="mt-10 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-[#0a0a0a]/30">
             Powered by Flare Confidential Compute
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* What's Private */}
-        <section className="mb-24">
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-foreground/40">
-            What&apos;s Private
-          </p>
-          <h2 className="mb-8 text-2xl font-bold md:text-3xl">Everything.</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <FeatureCard title="Swaps" description="Trade any token pair without revealing your identity. No front-running. No sandwich attacks." />
-            <FeatureCard title="Lending" description="Supply collateral and borrow privately. Your positions are invisible." />
-            <FeatureCard title="Staking" description="Stake and earn rewards without broadcasting your holdings." />
-            <FeatureCard title="Transfers" description="Send tokens to any Flare address privately." />
-            <FeatureCard title="FAssets" description="Mint, redeem, and manage FAssets privately." />
-            <FeatureCard title="Governance" description="Vote on proposals without revealing your position." />
-            <FeatureCard title="Messaging" description="Encrypted messages between wallets. End-to-end encrypted." />
-            <FeatureCard title="Oracle-Protected Trades" description="Set price conditions. Your trade executes when conditions are met. No one sees your limit orders." />
+      {/* What's Private — Light */}
+      <section className="bg-[#f0ebe2] px-6 py-16 md:px-16 md:py-24 border-t border-[#0a0a0a]/5">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 flex items-center justify-center">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#0a0a0a]/30">• • •</span>
           </div>
-        </section>
 
-        {/* FAQ */}
-        <section className="mb-20">
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-foreground/40">
-            FAQ
-          </p>
-          <h2 className="mb-2 text-2xl font-bold md:text-3xl">How it actually works.</h2>
-          <p className="mb-8 text-sm text-foreground/50">Privacy questions answered plainly.</p>
-
-          <div className="grid gap-3">
-            <FaqItem
-              category="BASICS"
-              question="How does it work?"
-              answer="You deposit tokens once. After that, all your activity happens privately inside Flare Confidential Compute (FCC) — secure hardware that no one can peek into. Your wallet never appears on-chain again."
-            />
-            <FaqItem
-              category="PRIVACY"
-              question="Is my wallet address visible?"
-              answer="Only your initial deposit is visible. After that, everything runs through a shared system wallet. There's no link back to you."
-            />
-            <FaqItem
-              category="BASICS"
-              question="Can I send to a fresh wallet?"
-              answer="Yes. The recipient doesn't need to have used Encrypted Finance before. They receive tokens normally."
-            />
-            <FaqItem
-              category="PRIVACY"
-              question="What if your system goes down?"
-              answer="Your funds are always safe. Your spending key + on-chain encrypted notes = full recovery. We can never lock you out."
-            />
-            <FaqItem
-              category="TEE"
-              question="Why only Flare?"
-              answer="Flare has native Confidential Compute (FCC) built into the network. This gives us hardware-level privacy guarantees that other chains don't offer natively. More chains coming as they add similar capabilities."
-            />
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <FeatureItem title="Swaps" description="Trade any token pair without revealing your identity. No front-running. No sandwich attacks." />
+            <FeatureItem title="Lending" description="Supply collateral and borrow privately. Your positions are invisible." />
+            <FeatureItem title="Staking" description="Stake and earn rewards without broadcasting your holdings." />
+            <FeatureItem title="Transfers" description="Send tokens to any Flare address privately." />
+            <FeatureItem title="FAssets" description="Mint, redeem, and manage FAssets (FXRP, FBTC, FDOGE, FXLM) privately." />
+            <FeatureItem title="Governance" description="Vote on proposals without revealing your position." />
+            <FeatureItem title="Messaging" description="Encrypted messages between wallets. End-to-end encrypted." />
+            <FeatureItem title="Oracle Trades" description="Set price conditions. Your trade executes when conditions are met privately." />
+            <FeatureItem title="Wrapping" description="Wrap FLR, delegate, claim rewards, join collateral pools. No public trace." />
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+
+      {/* FAQ Section — Light */}
+      <section className="bg-[#f0ebe2] px-6 py-16 md:px-16 md:py-24 border-t border-[#0a0a0a]/5">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-[#0a0a0a] md:text-4xl">
+              How it <em className="italic">actually</em> works.
+            </h2>
+            <p className="mt-2 text-sm text-[#0a0a0a]/50">Privacy questions answered plainly.</p>
+          </div>
+
+          <div className="flex flex-col">
+            <FaqRow question="How does it work?" answer="You deposit tokens once. After that, all your activity happens privately inside Flare Confidential Compute (FCC) — secure hardware that no one can peek into. Your wallet never appears on-chain again." />
+            <FaqRow question="Is my wallet address visible?" answer="Only your initial deposit is visible. After that, everything runs through a shared system wallet. There's no link back to you." />
+            <FaqRow question="Can I send to a fresh wallet?" answer="Yes. The recipient doesn't need to have used Encrypted Finance before. They receive tokens normally." />
+            <FaqRow question="What if your system goes down?" answer="Your funds are always safe. Your spending key + on-chain encrypted notes = full recovery. We can never lock you out." />
+            <FaqRow question="Why only Flare?" answer="Flare has native Confidential Compute (FCC) built into the network. This gives us hardware-level privacy guarantees that other chains don't offer natively. More chains coming as they add similar capabilities." />
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/50 px-6 py-6">
+      <footer className="bg-[#f0ebe2] border-t border-[#0a0a0a]/5 px-6 py-6">
         <div className="mx-auto flex max-w-6xl items-center justify-center">
-          <p className="text-xs text-foreground/40">&copy; 2026 Encrypted Finance.</p>
+          <p className="text-xs text-[#0a0a0a]/30">&copy; 2026 Encrypted Finance.</p>
         </div>
       </footer>
     </div>
   );
 }
 
-function FeatureCard({ title, description }: { title: string; description: string }) {
+function FeatureItem({ title, description }: { title: string; description: string }) {
   return (
-    <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-      <h3 className="mb-2 font-bold">{title}</h3>
-      <p className="text-sm leading-relaxed text-foreground/60">{description}</p>
+    <div>
+      <h3 className="mb-1 text-sm font-bold text-[#0a0a0a]">{title}</h3>
+      <p className="text-sm leading-relaxed text-[#0a0a0a]/50">{description}</p>
     </div>
   );
 }
 
-function FaqItem({ category, question, answer }: { category: string; question: string; answer: string }) {
+function FaqRow({ question, answer }: { question: string; answer: string }) {
   return (
-    <details className="group rounded-xl border border-border/50 bg-surface-light/30 overflow-hidden">
-      <summary className="flex cursor-pointer items-center gap-3 p-6 select-none">
-        <span className="rounded bg-foreground/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-foreground/50">
-          {category}
-        </span>
-        <span className="flex-1 font-medium">{question}</span>
-        <span className="text-foreground/30 transition-transform group-open:rotate-45 text-xl">+</span>
+    <details className="group border-b border-[#0a0a0a]/10">
+      <summary className="flex cursor-pointer items-center justify-between py-5 select-none">
+        <span className="text-sm font-medium text-[#0a0a0a] md:text-base">{question}</span>
+        <span className="ml-4 text-[#0a0a0a]/30 transition-transform group-open:rotate-45 text-lg shrink-0">+</span>
       </summary>
-      <div className="px-6 pb-6 pt-0">
-        <p className="text-sm leading-relaxed text-foreground/60">{answer}</p>
+      <div className="pb-5">
+        <p className="text-sm leading-relaxed text-[#0a0a0a]/60">{answer}</p>
       </div>
     </details>
   );
