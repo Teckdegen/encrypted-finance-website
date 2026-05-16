@@ -82,7 +82,7 @@ const chains = [
 
 export function Ecosystem() {
   const [scrollIndex, setScrollIndex] = useState(0);
-  const maxIndex = Math.max(0, chains.length - 3);
+  const maxIndex = Math.max(0, chains.length - 2);
 
   const scrollLeft = () => setScrollIndex((i) => Math.max(0, i - 1));
   const scrollRight = () => setScrollIndex((i) => Math.min(maxIndex, i + 1));
@@ -101,52 +101,54 @@ export function Ecosystem() {
         <div className="overflow-hidden">
           <div
             className="flex gap-6 transition-transform duration-300 ease-in-out"
-            style={{ transform: `translateX(-${scrollIndex * (100 / 3)}%)` }}
+            style={{ transform: `translateX(-${scrollIndex * (100 / 2)}%)` }}
           >
             {chains.map((chain) => (
               <a
                 key={chain.name}
                 href="#"
-                className="group min-w-[calc(33.333%-16px)] flex-shrink-0 rounded-2xl bg-[#1a1a1f] p-6 transition-all hover:scale-[1.02] hover:bg-[#222228]"
+                className="group flex flex-col min-w-[calc(50%-16px)] flex-shrink-0 rounded-3xl bg-[#161616] p-8 transition-all hover:scale-[1.01] hover:bg-[#1a1a1a] border border-white/5 h-[320px]"
               >
                 {/* Top row: icon + category badge */}
-                <div className="mb-8 flex items-start justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-accent">
+                <div className="mb-6 flex items-start justify-between">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#202020] text-accent">
                     {chain.icon}
                   </div>
-                  <span className="rounded-full bg-[#2a2a30] px-3 py-1 text-xs font-medium text-amber-300/90">
+                  <span className="rounded-full bg-accent text-background px-4 py-1.5 text-xs font-semibold">
                     {chain.category}
                   </span>
                 </div>
 
                 {/* Chain name */}
-                <h3 className="mb-3 text-xl font-bold text-white">
+                <h3 className="mb-4 text-2xl font-bold text-white">
                   {chain.name}
                 </h3>
 
-                {/* Description */}
-                <p className="mb-8 text-sm leading-relaxed text-foreground/50">
-                  {chain.description}
-                </p>
-
-                {/* View link */}
-                <div className="flex items-center gap-2 text-sm font-bold text-accent opacity-80 transition-opacity group-hover:opacity-100">
-                  VIEW
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    className="transition-transform group-hover:translate-x-1"
-                  >
-                    <path
-                      d="M3 8H13M13 8L9 4M13 8L9 12"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                {/* Description & View Button */}
+                <div className="mt-auto flex items-end justify-between gap-4">
+                  <p className="text-sm leading-relaxed text-foreground/60 max-w-[80%]">
+                    {chain.description}
+                  </p>
+                  
+                  {/* View link */}
+                  <div className="flex items-center gap-2 text-sm font-bold text-accent opacity-90 transition-opacity group-hover:opacity-100 uppercase tracking-widest">
+                    VIEW
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      className="transition-transform group-hover:translate-x-1"
+                    >
+                      <path
+                        d="M3 8H13M13 8L9 4M13 8L9 12"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </a>
             ))}

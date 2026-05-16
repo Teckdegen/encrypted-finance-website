@@ -1,9 +1,7 @@
 import { Hero } from "@/components/Hero";
-import { CoreIntro } from "@/components/CoreIntro";
-import { PrivacyInfrastructure } from "@/components/PrivacyInfrastructure";
+import { Compliance } from "@/components/Compliance";
 import { Ecosystem } from "@/components/Ecosystem";
 import { Community } from "@/components/Community";
-import { ClosingStatement } from "@/components/ClosingStatement";
 import { Navbar } from "@/components/Navbar";
 
 export default function Home() {
@@ -12,11 +10,9 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <CoreIntro />
-        <PrivacyInfrastructure />
+        <Compliance />
         <Ecosystem />
         <Community />
-        <ClosingStatement />
       </main>
     </div>
   );

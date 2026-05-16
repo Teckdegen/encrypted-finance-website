@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "EncryptedFi — Encrypted Layer for Public Chains",
   description:
     "Privacy infrastructure for EVM and non-EVM ecosystems powered by TEE, ZK, and FHE technologies.",
+  icons: {
+    icon: "https://pbs.twimg.com/profile_images/2052396648999923715/s8bKFJnU_400x400.jpg",
+  },
 };
 
 export default function RootLayout({

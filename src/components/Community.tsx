@@ -2,22 +2,22 @@ export function Community() {
   return (
     <section className="relative px-6 py-32">
       <div className="mx-auto max-w-4xl">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col -space-y-6">
           {/* X / Twitter card */}
           <a
             href="https://x.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between rounded-2xl bg-[#1a1a1f] p-8 transition-all hover:bg-[#222228] md:p-10"
+            className="group flex items-center justify-between rounded-[3rem] bg-[#141414] p-12 transition-all hover:bg-[#1a1a1a] pb-20 z-0"
           >
             <div>
-              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-green-400/80">
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.15em] text-white">
                 Find us on the feed
               </p>
-              <p className="text-5xl font-bold text-green-400 md:text-6xl">
-                10K+
+              <p className="text-6xl font-medium text-accent md:text-8xl">
+                270K+
               </p>
-              <p className="mt-1 text-sm text-green-400/60">Followers</p>
+              <p className="mt-2 text-base font-medium text-foreground/50">Followers</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               {/* X logo */}
@@ -56,16 +56,16 @@ export function Community() {
             href="https://t.me"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between rounded-2xl border border-border/30 bg-[#1a1a1f] p-8 transition-all hover:bg-[#222228] md:p-10"
+            className="group flex items-center justify-between rounded-[3rem] border border-white/5 bg-[#141414] p-12 transition-all hover:bg-[#1a1a1a] z-10 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]"
           >
             <div>
-              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-orange-400/80">
+              <p className="mb-2 text-sm font-bold uppercase tracking-[0.15em] text-white">
                 Join our community
               </p>
-              <p className="text-5xl font-bold text-orange-400 md:text-6xl">
-                5K+
+              <p className="text-6xl font-medium text-accent md:text-8xl">
+                490K+
               </p>
-              <p className="mt-1 text-sm text-orange-400/60">Members</p>
+              <p className="mt-2 text-base font-medium text-foreground/50">Members</p>
             </div>
             <div className="flex flex-col items-center gap-2">
               {/* Telegram logo */}
