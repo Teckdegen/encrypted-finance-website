@@ -17,9 +17,9 @@ export default function Home() {
           <CoreIntro />
           <PrivacyPhilosophy />
           <Ecosystem />
-          <Community />
         </div>
-        {/* Light footer */}
+        {/* Light sections */}
+        <Community />
         <ClosingStatement />
       </main>
     </div>
