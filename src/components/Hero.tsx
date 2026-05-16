@@ -174,13 +174,13 @@ export function Hero() {
 
         {/* Main animated text with brackets */}
         <div className="flex items-center justify-center">
-          <span className="text-3xl font-light text-[#0a0a0a]/20 sm:text-5xl md:text-7xl lg:text-9xl select-none">
+          <span className="text-4xl font-light text-[#0a0a0a]/20 sm:text-6xl md:text-7xl lg:text-9xl select-none">
             &lt;/
           </span>
-          <h1 className="font-mono text-3xl font-bold tracking-tighter text-[#0a0a0a] sm:text-5xl md:text-7xl lg:text-9xl">
+          <h1 className="font-mono text-4xl font-bold tracking-tighter text-[#0a0a0a] sm:text-6xl md:text-7xl lg:text-9xl">
             {displayText}
           </h1>
-          <span className="text-3xl font-light text-[#0a0a0a]/20 sm:text-5xl md:text-7xl lg:text-9xl select-none">
+          <span className="text-4xl font-light text-[#0a0a0a]/20 sm:text-6xl md:text-7xl lg:text-9xl select-none">
             &gt;
           </span>
         </div>
