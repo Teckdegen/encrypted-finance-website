@@ -118,7 +118,8 @@ export function Hero() {
         const lineIndex = i % lines.length;
         const y = (i * lineHeight) - scrollOffset + height * 0.05;
         if (y < -lineHeight || y > height + lineHeight) continue;
-        const x = 30 + (i % 5) * (width / 5);
+        const cols = width < 600 ? 2 : 5;
+        const x = 20 + (i % cols) * (width / cols);
         ctx.fillStyle = "rgba(10, 10, 10, 0.12)";
         ctx.fillText(lines[lineIndex], x, y);
       }
@@ -128,7 +129,8 @@ export function Hero() {
         const lineIndex = (i + 7) % lines.length;
         const y = (i * lineHeight * 1.4) - (scrollOffset * 0.5) + height * 0.2;
         if (y < -lineHeight || y > height + lineHeight) continue;
-        const x = width * 0.1 + (i % 4) * (width / 4);
+        const cols2 = width < 600 ? 2 : 4;
+        const x = width * 0.1 + (i % cols2) * (width / cols2);
         ctx.fillStyle = "rgba(10, 10, 10, 0.08)";
         ctx.fillText(lines[lineIndex], x, y);
       }
@@ -164,21 +166,21 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 text-center">
+      <div className="relative z-10 text-center px-2">
         {/* Subtitle above */}
-        <p className="mb-8 text-sm text-[#0a0a0a]/50 md:text-base">
+        <p className="mb-8 text-xs text-[#0a0a0a]/50 sm:text-sm md:text-base">
           Private financial infrastructure for blockchain ecosystems.
         </p>
 
-        {/* Main animated text with brackets — 1.5x bigger */}
+        {/* Main animated text with brackets */}
         <div className="flex items-center justify-center">
-          <span className="text-7xl font-light text-[#0a0a0a]/20 md:text-9xl lg:text-[10rem] select-none">
+          <span className="text-3xl font-light text-[#0a0a0a]/20 sm:text-5xl md:text-7xl lg:text-9xl select-none">
             &lt;/
           </span>
-          <h1 className="font-mono text-7xl font-bold tracking-tight text-[#0a0a0a] md:text-9xl lg:text-[10rem]">
+          <h1 className="font-mono text-3xl font-bold tracking-tighter text-[#0a0a0a] sm:text-5xl md:text-7xl lg:text-9xl">
             {displayText}
           </h1>
-          <span className="text-7xl font-light text-[#0a0a0a]/20 md:text-9xl lg:text-[10rem] select-none">
+          <span className="text-3xl font-light text-[#0a0a0a]/20 sm:text-5xl md:text-7xl lg:text-9xl select-none">
             &gt;
           </span>
         </div>
