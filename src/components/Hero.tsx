@@ -9,7 +9,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl text-center mt-12">
         {/* Main headline */}
         <h1 className="mb-6 text-5xl font-medium tracking-tight md:text-7xl lg:text-8xl text-foreground">
-          Encrypted Finance <br />for Public Chains
+          Encrypted Layer <br />for Public Chains
         </h1>
 
         {/* Subtitle */}

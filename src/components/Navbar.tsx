@@ -14,24 +14,7 @@ export function Navbar() {
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
-          <a
-            href="#ecosystem"
-            className="text-sm text-foreground/60 transition-colors hover:text-foreground"
-          >
-            Ecosystem
-          </a>
-          <a
-            href="#infrastructure"
-            className="text-sm text-foreground/60 transition-colors hover:text-foreground"
-          >
-            Infrastructure
-          </a>
-          <a
-            href="#ecosystem"
-            className="rounded-full border border-accent/50 bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent transition-all hover:bg-accent/20"
-          >
-            Explore Chains
-          </a>
+          {/* Removed links as requested */}
         </div>
       </div>
     </nav>
