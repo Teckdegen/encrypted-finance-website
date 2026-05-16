@@ -12,14 +12,15 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        {/* Dark sections below the hero */}
+        {/* Dark sections */}
         <div className="bg-background bg-grid">
           <CoreIntro />
           <PrivacyPhilosophy />
           <Ecosystem />
           <Community />
-          <ClosingStatement />
         </div>
+        {/* Light footer */}
+        <ClosingStatement />
       </main>
     </div>
   );
