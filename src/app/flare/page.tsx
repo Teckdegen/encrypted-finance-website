@@ -21,14 +21,6 @@ export default function FlarePage() {
               Encrypted Finance
             </span>
           </a>
-          <a
-            href="https://flare.tee.encrypted.finance"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex h-9 items-center rounded-full bg-foreground px-5 text-xs font-semibold text-background transition-opacity hover:opacity-90"
-          >
-            Launch App
-          </a>
         </div>
       </nav>
 
@@ -45,247 +37,136 @@ export default function FlarePage() {
         </a>
 
         {/* Hero */}
-        <div className="mb-20">
+        <div className="mb-24">
           <div className="flex items-center gap-4 mb-6">
             <img
               src="https://pbs.twimg.com/profile_images/1635937765534707712/JgfEVRQA_400x400.jpg"
               alt="Flare"
               className="h-14 w-14 rounded-full"
             />
-            <div>
-              <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-                Private DeFi. Every Chain.
-              </h1>
-            </div>
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+              Private DeFi on Flare
+            </h1>
           </div>
           <p className="max-w-2xl text-lg leading-relaxed text-foreground/70">
             One deposit. Then everything is private. Swaps, lending, staking, bridging, governance. Your wallet never shows up on-chain again.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="https://flare.tee.encrypted.finance"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-full bg-foreground px-6 text-sm font-semibold text-background transition-opacity hover:opacity-90"
-            >
-              Launch App
-            </a>
-            <a
-              href="#how-it-works"
-              className="inline-flex h-11 items-center rounded-full border border-border px-6 text-sm font-medium text-foreground/80 transition-colors hover:border-foreground/30"
-            >
-              Read the Docs
-            </a>
-          </div>
         </div>
 
         {/* The Problem */}
-        <section className="mb-20">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">The Problem</h2>
-          <p className="text-base leading-relaxed text-foreground/70">
-            Every transaction on a public blockchain is visible. Your wallet, your balances, your trades, your strategies. Anyone can see everything. MEV bots front-run you. Competitors track your moves. Your financial life is an open book.
+        <section className="mb-24">
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-foreground/40">
+            The Problem
           </p>
+          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
+            Every transfer you send on a public chain is visible to everyone. Forever.
+          </h2>
+          <p className="text-lg text-foreground/70">Until now.</p>
         </section>
 
-        {/* The Solution */}
-        <section className="mb-20">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">The Solution</h2>
-          <p className="text-base leading-relaxed text-foreground/70">
-            Encrypted Finance is a privacy layer built on Flare using FCC (Flare Confidential Compute). You deposit once, and after that your wallet never appears on-chain again. All your DeFi activity happens privately inside secure hardware that no one — not even us — can peek into.
-          </p>
-        </section>
+        {/* How It Works — 3 Steps */}
+        <section className="mb-24">
+          <div className="grid gap-6">
+            {/* Step 01 — Wrap */}
+            <div className="rounded-2xl border border-border/50 bg-surface-light/30 p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">01</span>
+                <h3 className="text-xl font-bold">WRAP</h3>
+              </div>
+              <p className="text-sm text-foreground/60 mb-6">Any token enters the private system.</p>
+              <div className="flex items-center gap-4 font-mono text-sm">
+                <span className="rounded-lg bg-surface px-3 py-2 text-foreground/70">100 TOKEN</span>
+                <span className="text-foreground/30">→</span>
+                <span className="rounded-lg bg-accent/10 px-3 py-2 text-accent">PRIVATE NOTE</span>
+              </div>
+            </div>
 
-        {/* How It Works */}
-        <section id="how-it-works" className="mb-20">
-          <h2 className="mb-8 text-2xl font-bold md:text-3xl">How It Works</h2>
-          <div className="grid gap-4">
-            <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-              <div className="flex items-start gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground text-sm font-bold text-background">1</span>
-                <div>
-                  <h3 className="font-bold">You deposit once</h3>
-                  <p className="mt-1 text-sm text-foreground/60">Your only on-chain transaction. After this, you&apos;re invisible.</p>
-                </div>
+            {/* Step 02 — Transact */}
+            <div className="rounded-2xl border border-border/50 bg-surface-light/30 p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">02</span>
+                <h3 className="text-xl font-bold">TRANSACT</h3>
+              </div>
+              <p className="text-sm text-foreground/60 mb-6">Send, swap, or earn. Nothing leaks.</p>
+              <div className="flex items-center gap-4 font-mono text-sm">
+                <span className="rounded-lg bg-surface px-3 py-2 text-foreground/70">▓▓▓ PRIVATE</span>
+                <span className="text-foreground/30">→</span>
+                <span className="rounded-lg bg-surface px-3 py-2 text-foreground/70">▓▓▓ PRIVATE</span>
               </div>
             </div>
-            <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-              <div className="flex items-start gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground text-sm font-bold text-background">2</span>
-                <div>
-                  <h3 className="font-bold">You sign instructions off-chain</h3>
-                  <p className="mt-1 text-sm text-foreground/60">Zero gas. The SDK handles everything.</p>
-                </div>
+
+            {/* Step 03 — Unwrap */}
+            <div className="rounded-2xl border border-border/50 bg-surface-light/30 p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">03</span>
+                <h3 className="text-xl font-bold">UNWRAP</h3>
               </div>
-            </div>
-            <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-              <div className="flex items-start gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground text-sm font-bold text-background">3</span>
-                <div>
-                  <h3 className="font-bold">FCC executes privately</h3>
-                  <p className="mt-1 text-sm text-foreground/60">Your instruction runs inside secure hardware from a shared wallet. No link back to you.</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-              <div className="flex items-start gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-foreground text-sm font-bold text-background">4</span>
-                <div>
-                  <h3 className="font-bold">You receive encrypted notes</h3>
-                  <p className="mt-1 text-sm text-foreground/60">Your balance is encrypted on-chain. Only your key can read it.</p>
-                </div>
+              <p className="text-sm text-foreground/60 mb-6">Back to your token. With yield.</p>
+              <div className="flex items-center gap-4 font-mono text-sm">
+                <span className="rounded-lg bg-accent/10 px-3 py-2 text-accent">PRIVATE NOTE</span>
+                <span className="text-foreground/30">→</span>
+                <span className="rounded-lg bg-surface px-3 py-2 text-foreground/70">105 TOKEN</span>
               </div>
             </div>
           </div>
-        </section>
 
-        {/* Tech Stack */}
-        <section className="mb-20">
-          <h2 className="mb-6 text-2xl font-bold md:text-3xl">Tech Stack</h2>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {[
-              "FCC (Flare Confidential Compute) for private execution",
-              "ECIES encryption for payload security",
-              "EIP-712 signatures for authorization",
-              "TEE hardware attestation for trust",
-              "WebSocket indexer for real-time balance updates",
-              "FTSO oracle integration for price feeds",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-2 rounded-lg border border-border/30 bg-surface-light/20 px-4 py-3">
-                <span className="mt-0.5 text-accent">•</span>
-                <span className="text-sm text-foreground/70">{item}</span>
-              </div>
-            ))}
-          </div>
+          <p className="mt-8 text-center text-xs font-bold uppercase tracking-[0.2em] text-foreground/40">
+            Powered by Flare Confidential Compute
+          </p>
         </section>
 
         {/* What's Private */}
-        <section className="mb-20">
-          <h2 className="mb-8 text-2xl font-bold md:text-3xl">What&apos;s Private</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <FeatureCard title="Swaps" description="Trade any token pair without revealing your identity. Swaps route through SparkDEX, Kinetic, and other Flare DEXs. Same liquidity, same prices, but private. No front-running. No sandwich attacks." />
-            <FeatureCard title="Lending" description="Supply collateral and borrow privately. Your positions and liquidation levels are invisible." />
-            <FeatureCard title="Staking" description="Stake and earn rewards without broadcasting your holdings. Delegate to FTSO providers privately." />
-            <FeatureCard title="Transfers" description="Send tokens to any Flare address privately. The recipient doesn't even need to have used Encrypted Finance before." />
-            <FeatureCard title="FAssets" description="Mint, redeem, and manage FAssets (FXRP, FBTC, FDOGE, FXLM) privately. Firelight vaults, Upshift vaults, LayerZero bridging — all private." />
-            <FeatureCard title="Governance" description="Vote on proposals without revealing your position. No vote buying. No social pressure." />
-            <FeatureCard title="Messaging" description="Encrypted messages between wallets. End-to-end encrypted, readable only by the recipient." />
-            <FeatureCard title="Oracle-Protected Trades" description="Set price conditions. The FCC only executes your trade when conditions are met. No one sees your limit orders." />
-            <FeatureCard title="Wrapping & Delegation" description="Wrap FLR, delegate, claim rewards, join collateral pools. No public trace." />
-            <FeatureCard title="FCC-Exclusive Operations" description="Dark pools, sealed-bid auctions, credit scoring, portfolio rebalancing, MEV protection, streaming payments, compliance proofs, private DAO participation." />
-          </div>
-        </section>
-
-        {/* Security */}
-        <section className="mb-20">
-          <h2 className="mb-6 text-2xl font-bold md:text-3xl">Security</h2>
-          <div className="grid gap-4">
-            <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-              <h3 className="font-bold">Your keys, your funds.</h3>
-              <p className="mt-1 text-sm text-foreground/60">Spending key is generated and stored on your device. No custodian.</p>
-            </div>
-            <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-              <h3 className="font-bold">Self-sovereign recovery.</h3>
-              <p className="mt-1 text-sm text-foreground/60">If the FCC goes down, your spending key + on-chain notes = full recovery. Zero fund loss.</p>
-            </div>
-            <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-              <h3 className="font-bold">Four layers of double-spend prevention.</h3>
-              <p className="mt-1 text-sm text-foreground/60">On-chain checks, FCC pre-validation, instruction replay tracking, signature nonces.</p>
-            </div>
-            <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-              <h3 className="font-bold">Vault safety.</h3>
-              <p className="mt-1 text-sm text-foreground/60">Note commitments, reentrancy guards, fee-on-transfer protection, gas DoS caps.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Multi-Chain */}
-        <section className="mb-20">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">Multi-Chain</h2>
-          <p className="mb-6 text-base leading-relaxed text-foreground/70">
-            Encrypted Finance is not Flare-only. The privacy layer deploys across multiple chains. Each chain gets its own FCC extension, vault contracts, and SDK.
+        <section className="mb-24">
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-foreground/40">
+            What&apos;s Private
           </p>
-          <div className="overflow-hidden rounded-xl border border-border/50">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-border/50 bg-surface-light/30">
-                  <th className="px-4 py-3 text-left font-semibold">Chain</th>
-                  <th className="px-4 py-3 text-left font-semibold">SDK</th>
-                  <th className="px-4 py-3 text-left font-semibold">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-border/30">
-                  <td className="px-4 py-3">Flare</td>
-                  <td className="px-4 py-3 font-mono text-xs text-accent">@encrypted-finance/flare</td>
-                  <td className="px-4 py-3"><span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">Testnet live (Coston2)</span></td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3">More chains</td>
-                  <td className="px-4 py-3 text-foreground/50">Coming soon</td>
-                  <td className="px-4 py-3 text-foreground/50">In development</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 text-sm text-foreground/50">Same privacy. Same UX. One SDK per chain.</p>
-        </section>
-
-        {/* Gas */}
-        <section className="mb-20">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">Gas</h2>
-          <div className="overflow-hidden rounded-xl border border-border/50">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-border/50 bg-surface-light/30">
-                  <th className="px-4 py-3 text-left font-semibold">Operation</th>
-                  <th className="px-4 py-3 text-left font-semibold">Who Pays</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-border/30">
-                  <td className="px-4 py-3">Deposit (your only TX)</td>
-                  <td className="px-4 py-3">You</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3">Everything else</td>
-                  <td className="px-4 py-3">FCC hot wallet</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 text-sm text-foreground/50">A small relay fee (0.2–0.5%) covers gas. You never need FLR for gas after your deposit.</p>
-        </section>
-
-        {/* Testnet */}
-        <section className="mb-20">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">Testnet (Coston2)</h2>
-          <p className="mb-4 text-base text-foreground/70">Live now. Try it:</p>
-          <div className="grid gap-3">
-            <div className="flex items-center gap-3 rounded-lg border border-border/30 bg-surface-light/20 px-4 py-3">
-              <span className="text-sm font-semibold text-foreground/50">Chain ID:</span>
-              <span className="font-mono text-sm">114</span>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg border border-border/30 bg-surface-light/20 px-4 py-3">
-              <span className="text-sm font-semibold text-foreground/50">Faucet:</span>
-              <a href="https://faucet.flare.network/coston2" target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-accent hover:underline">faucet.flare.network/coston2</a>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg border border-border/30 bg-surface-light/20 px-4 py-3">
-              <span className="text-sm font-semibold text-foreground/50">App:</span>
-              <a href="https://flare.tee.encrypted.finance" target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-accent hover:underline">flare.tee.encrypted.finance</a>
-            </div>
+          <h2 className="mb-8 text-2xl font-bold md:text-3xl">Everything.</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <FeatureCard title="Swaps" description="Trade any token pair without revealing your identity. No front-running. No sandwich attacks." />
+            <FeatureCard title="Lending" description="Supply collateral and borrow privately. Your positions are invisible." />
+            <FeatureCard title="Staking" description="Stake and earn rewards without broadcasting your holdings." />
+            <FeatureCard title="Transfers" description="Send tokens to any Flare address privately." />
+            <FeatureCard title="FAssets" description="Mint, redeem, and manage FAssets privately." />
+            <FeatureCard title="Governance" description="Vote on proposals without revealing your position." />
+            <FeatureCard title="Messaging" description="Encrypted messages between wallets. End-to-end encrypted." />
+            <FeatureCard title="Oracle-Protected Trades" description="Set price conditions. Your trade executes when conditions are met. No one sees your limit orders." />
           </div>
         </section>
 
         {/* FAQ */}
         <section className="mb-20">
-          <h2 className="mb-8 text-2xl font-bold md:text-3xl">FAQ</h2>
-          <div className="grid gap-4">
-            <FaqItem question="Do I need to install anything?" answer="No. Connect any EVM wallet to the web app." />
-            <FaqItem question="Can anyone see my balance?" answer="No. Only your spending key can decrypt your notes." />
-            <FaqItem question="What if the FCC goes down?" answer="You still have your spending key. All notes are on-chain. Full recovery." />
-            <FaqItem question="Is this custodial?" answer="No. The FCC cannot move funds without your signature." />
-            <FaqItem question="What chains will Encrypted Finance support?" answer="Starting with Flare. More EVM chains coming." />
-            <FaqItem question="How is this different from mixers?" answer="Mixers shuffle tokens. Encrypted Finance is a full private DeFi execution layer. Swap, lend, stake, bridge, vote, message — all without leaving privacy." />
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-foreground/40">
+            FAQ
+          </p>
+          <h2 className="mb-2 text-2xl font-bold md:text-3xl">How it actually works.</h2>
+          <p className="mb-8 text-sm text-foreground/50">Privacy questions answered plainly.</p>
+
+          <div className="grid gap-3">
+            <FaqItem
+              category="BASICS"
+              question="How does it work?"
+              answer="You deposit tokens once. After that, all your activity happens privately inside Flare Confidential Compute (FCC) — secure hardware that no one can peek into. Your wallet never appears on-chain again."
+            />
+            <FaqItem
+              category="PRIVACY"
+              question="Is my wallet address visible?"
+              answer="Only your initial deposit is visible. After that, everything runs through a shared system wallet. There's no link back to you."
+            />
+            <FaqItem
+              category="BASICS"
+              question="Can I send to a fresh wallet?"
+              answer="Yes. The recipient doesn't need to have used Encrypted Finance before. They receive tokens normally."
+            />
+            <FaqItem
+              category="PRIVACY"
+              question="What if your system goes down?"
+              answer="Your funds are always safe. Your spending key + on-chain encrypted notes = full recovery. We can never lock you out."
+            />
+            <FaqItem
+              category="TEE"
+              question="Why only Flare?"
+              answer="Flare has native Confidential Compute (FCC) built into the network. This gives us hardware-level privacy guarantees that other chains don't offer natively. More chains coming as they add similar capabilities."
+            />
           </div>
         </section>
       </main>
@@ -309,11 +190,19 @@ function FeatureCard({ title, description }: { title: string; description: strin
   );
 }
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({ category, question, answer }: { category: string; question: string; answer: string }) {
   return (
-    <div className="rounded-xl border border-border/50 bg-surface-light/30 p-6">
-      <h3 className="mb-2 font-bold">{question}</h3>
-      <p className="text-sm text-foreground/60">{answer}</p>
-    </div>
+    <details className="group rounded-xl border border-border/50 bg-surface-light/30 overflow-hidden">
+      <summary className="flex cursor-pointer items-center gap-3 p-6 select-none">
+        <span className="rounded bg-foreground/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-foreground/50">
+          {category}
+        </span>
+        <span className="flex-1 font-medium">{question}</span>
+        <span className="text-foreground/30 transition-transform group-open:rotate-45 text-xl">+</span>
+      </summary>
+      <div className="px-6 pb-6 pt-0">
+        <p className="text-sm leading-relaxed text-foreground/60">{answer}</p>
+      </div>
+    </details>
   );
 }
