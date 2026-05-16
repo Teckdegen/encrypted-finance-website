@@ -5,20 +5,20 @@ import { Ecosystem } from "@/components/Ecosystem";
 import { Community } from "@/components/Community";
 import { ClosingStatement } from "@/components/ClosingStatement";
 import { Navbar } from "@/components/Navbar";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 
 export default function Home() {
   return (
-    <div className="relative bg-[#f0ebe2]">
-      {/* Global animated grid background */}
-      <AnimatedBackground />
-
+    <div className="relative">
       <Navbar />
-      <main className="relative z-10">
+      <main>
         <Hero />
-        <CoreIntro />
-        <PrivacyPhilosophy />
-        <Ecosystem />
+        {/* Dark sections */}
+        <div className="bg-background bg-grid">
+          <CoreIntro />
+          <PrivacyPhilosophy />
+          <Ecosystem />
+        </div>
+        {/* Light sections */}
         <Community />
         <ClosingStatement />
       </main>
