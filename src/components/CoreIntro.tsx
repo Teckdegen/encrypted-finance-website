@@ -7,7 +7,7 @@ export function CoreIntro() {
         </h2>
         <p className="mx-auto max-w-3xl text-lg leading-relaxed text-foreground/70 md:text-xl">
           Transactions, balances, trading activity, and financial behavior remain
-          permanently visible on public chains. Encrypted enables confidential
+          permanently visible on public chains. Encrypted Finance enables confidential
           financial infrastructure while preserving public blockchain settlement.
         </p>
       </div>

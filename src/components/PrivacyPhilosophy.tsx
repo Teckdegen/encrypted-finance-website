@@ -10,7 +10,7 @@ export function PrivacyPhilosophy() {
             Privacy is not one-size-fits-all.
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-foreground/70 md:text-xl">
-            Encrypted adapts its approach to each blockchain ecosystem, enabling private financial interactions without changing how the underlying networks operate.
+            Encrypted Finance adapts its approach to each blockchain ecosystem, enabling private financial interactions without changing how the underlying networks operate.
           </p>
         </div>
 

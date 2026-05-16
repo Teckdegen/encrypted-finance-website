@@ -9,7 +9,7 @@ export function Navbar() {
             className="h-8 w-8 rounded-full"
           />
           <span className="text-lg font-semibold tracking-tight text-[#0a0a0a]">
-            EncryptedFi
+            Encrypted Finance
           </span>
         </a>
 

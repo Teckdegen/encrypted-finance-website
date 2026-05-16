@@ -35,7 +35,7 @@ export function Ecosystem() {
             Supported Chains
           </h2>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-foreground/70">
-            Explore how Encrypted brings private financial infrastructure to
+            Explore how Encrypted Finance brings private financial infrastructure to
             different blockchain environments.
           </p>
         </div>
