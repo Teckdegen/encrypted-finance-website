@@ -91,8 +91,8 @@ export function Hero() {
     ];
 
     let scrollOffset = 0;
-    const lineHeight = 22;
-    const scrollSpeed = 0.25;
+    const lineHeight = 24;
+    const scrollSpeed = 0.2;
 
     const resize = () => {
       width = canvas.offsetWidth;
@@ -107,32 +107,41 @@ export function Hero() {
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      ctx.font = "11px monospace";
+
+      const isMobile = width < 600;
+      const fontSize = isMobile ? 9 : 11;
+      ctx.font = `${fontSize}px monospace`;
 
       scrollOffset += scrollSpeed;
       const totalHeight = lines.length * lineHeight;
       if (scrollOffset > totalHeight) scrollOffset = 0;
 
-      // Layer 1
-      for (let i = 0; i < lines.length * 3; i++) {
+      // Single layer on mobile, two layers on desktop
+      const cols = isMobile ? 1 : 5;
+      const opacity = isMobile ? 0.06 : 0.1;
+      const count = isMobile ? lines.length : lines.length * 3;
+
+      for (let i = 0; i < count; i++) {
         const lineIndex = i % lines.length;
         const y = (i * lineHeight) - scrollOffset + height * 0.05;
         if (y < -lineHeight || y > height + lineHeight) continue;
-        const cols = width < 600 ? 2 : 5;
-        const x = 20 + (i % cols) * (width / cols);
-        ctx.fillStyle = "rgba(10, 10, 10, 0.12)";
+        const x = isMobile
+          ? 10 + (i % 2) * (width * 0.5)
+          : 20 + (i % cols) * (width / cols);
+        ctx.fillStyle = `rgba(10, 10, 10, ${opacity})`;
         ctx.fillText(lines[lineIndex], x, y);
       }
 
-      // Layer 2 (slower, offset)
-      for (let i = 0; i < lines.length * 2; i++) {
-        const lineIndex = (i + 7) % lines.length;
-        const y = (i * lineHeight * 1.4) - (scrollOffset * 0.5) + height * 0.2;
-        if (y < -lineHeight || y > height + lineHeight) continue;
-        const cols2 = width < 600 ? 2 : 4;
-        const x = width * 0.1 + (i % cols2) * (width / cols2);
-        ctx.fillStyle = "rgba(10, 10, 10, 0.08)";
-        ctx.fillText(lines[lineIndex], x, y);
+      // Second layer only on desktop
+      if (!isMobile) {
+        for (let i = 0; i < lines.length * 2; i++) {
+          const lineIndex = (i + 7) % lines.length;
+          const y = (i * lineHeight * 1.4) - (scrollOffset * 0.5) + height * 0.2;
+          if (y < -lineHeight || y > height + lineHeight) continue;
+          const x = width * 0.1 + (i % 4) * (width / 4);
+          ctx.fillStyle = "rgba(10, 10, 10, 0.06)";
+          ctx.fillText(lines[lineIndex], x, y);
+        }
       }
 
       animationId = requestAnimationFrame(draw);
@@ -147,7 +156,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 bg-[#f0ebe2]" />
       <div
@@ -166,21 +175,21 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 text-center px-2">
+      <div className="relative z-10 text-center">
         {/* Subtitle above */}
-        <p className="mb-8 text-xs text-[#0a0a0a]/50 sm:text-sm md:text-base">
+        <p className="mb-6 text-xs text-[#0a0a0a]/50 sm:text-sm md:text-base">
           Private financial infrastructure for blockchain ecosystems.
         </p>
 
         {/* Main animated text with brackets */}
-        <div className="flex items-center justify-center">
-          <span className="text-4xl font-light text-[#0a0a0a]/20 sm:text-6xl md:text-7xl lg:text-9xl select-none">
+        <div className="flex items-center justify-center whitespace-nowrap">
+          <span className="text-[2rem] font-light text-[#0a0a0a]/20 sm:text-5xl md:text-7xl lg:text-9xl select-none">
             &lt;/
           </span>
-          <h1 className="font-mono text-4xl font-bold tracking-tighter text-[#0a0a0a] sm:text-6xl md:text-7xl lg:text-9xl">
+          <h1 className="font-mono text-[2rem] font-bold tracking-tighter text-[#0a0a0a] sm:text-5xl md:text-7xl lg:text-9xl">
             {displayText}
           </h1>
-          <span className="text-4xl font-light text-[#0a0a0a]/20 sm:text-6xl md:text-7xl lg:text-9xl select-none">
+          <span className="text-[2rem] font-light text-[#0a0a0a]/20 sm:text-5xl md:text-7xl lg:text-9xl select-none">
             &gt;
           </span>
         </div>
