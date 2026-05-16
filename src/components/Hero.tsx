@@ -119,7 +119,7 @@ export function Hero() {
         const y = (i * lineHeight) - scrollOffset + height * 0.05;
         if (y < -lineHeight || y > height + lineHeight) continue;
         const x = 30 + (i % 5) * (width / 5);
-        ctx.fillStyle = "rgba(10, 10, 10, 0.04)";
+        ctx.fillStyle = "rgba(10, 10, 10, 0.12)";
         ctx.fillText(lines[lineIndex], x, y);
       }
 
@@ -129,7 +129,7 @@ export function Hero() {
         const y = (i * lineHeight * 1.4) - (scrollOffset * 0.5) + height * 0.2;
         if (y < -lineHeight || y > height + lineHeight) continue;
         const x = width * 0.1 + (i % 4) * (width / 4);
-        ctx.fillStyle = "rgba(10, 10, 10, 0.025)";
+        ctx.fillStyle = "rgba(10, 10, 10, 0.08)";
         ctx.fillText(lines[lineIndex], x, y);
       }
 
