@@ -1,6 +1,6 @@
 export function Community() {
   return (
-    <section id="community" className="relative px-6 py-32 bg-[#f0ebe2]">
+    <section id="community" className="relative px-6 py-32">
       <div className="mx-auto max-w-4xl">
         <div className="flex flex-col gap-4">
           {/* X / Twitter card */}
