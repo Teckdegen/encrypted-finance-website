@@ -5,7 +5,7 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1635937765534707712/JgfEVRQA_400x400.jpg",
     href: "/flare",
     comingSoon: false,
-    nameColor: "text-green-400",
+    nameColor: "text-red-500",
     borderColor: "border-green-400/40",
   },
   {
@@ -14,7 +14,7 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1967693862559698944/XTfCXXGa_400x400.jpg",
     href: "#",
     comingSoon: true,
-    nameColor: "text-orange-400",
+    nameColor: "text-purple-400",
     borderColor: "border-orange-400/40",
   },
   {
