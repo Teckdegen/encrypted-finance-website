@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { CoreIntro } from "@/components/CoreIntro";
 import { PrivacyPhilosophy } from "@/components/PrivacyPhilosophy";
 import { Ecosystem } from "@/components/Ecosystem";
 import { Community } from "@/components/Community";
