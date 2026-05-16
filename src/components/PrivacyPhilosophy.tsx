@@ -16,8 +16,8 @@ export function PrivacyPhilosophy() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Large Dark Card */}
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-foreground p-10 md:p-12 shadow-2xl flex flex-col justify-between min-h-[400px]">
-            <div className="relative z-10">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-foreground p-10 md:p-12 shadow-2xl flex flex-col justify-between min-h-[450px]">
+            <div className="relative z-10 mb-8">
               <h3 className="mb-4 text-3xl font-medium text-background">
                 Privacy by Design
               </h3>
@@ -26,13 +26,49 @@ export function PrivacyPhilosophy() {
               </p>
             </div>
             
-            {/* Abstract Graphic representing the globe */}
-            <div className="absolute -bottom-20 -right-20 h-[300px] w-[300px] rounded-full border border-background/10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-background/5 to-transparent">
-               <div className="absolute inset-0 flex flex-wrap items-center justify-center gap-2 opacity-20 p-8">
-                  {Array.from({ length: 64 }).map((_, i) => (
-                    <div key={i} className="h-1.5 w-1.5 rounded-full bg-background" />
-                  ))}
-               </div>
+            {/* Encrypted Compute Graphic (Replacing Globe) */}
+            <div className="relative z-10 mt-auto flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-4 bg-background/5 p-6 rounded-3xl border border-background/10">
+              {/* User Box */}
+              <div className="flex flex-col items-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-background bg-foreground shadow-[3px_3px_0px_0px_rgba(240,235,226,0.3)]">
+                  <span className="text-[10px] font-bold text-background">USER</span>
+                </div>
+              </div>
+
+              {/* Arrow Right */}
+              <div className="hidden sm:flex flex-col items-center justify-center w-6">
+                <div className="h-[2px] w-full bg-background relative opacity-50">
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 border-t-[4px] border-b-[4px] border-l-[5px] border-t-transparent border-b-transparent border-l-background" />
+                </div>
+              </div>
+
+              {/* Encrypted Compute Circle */}
+              <div className="flex flex-col items-center relative">
+                <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-[#111] border border-background/20">
+                  {/* Pulsing rings */}
+                  <div className="absolute inset-0 rounded-full border border-background/20 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" />
+                  <div className="absolute -inset-2 rounded-full border border-background/10 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite_1s]" />
+                  <div className="absolute -inset-4 rounded-full border border-background/5 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite_2s]" />
+                  
+                  <span className="text-center text-[7px] font-bold leading-tight tracking-widest text-background uppercase px-1 z-10">
+                    Encrypted <br /> Compute
+                  </span>
+                </div>
+              </div>
+
+              {/* Arrow Right */}
+              <div className="hidden sm:flex flex-col items-center justify-center w-6">
+                <div className="h-[2px] w-full bg-background relative opacity-50">
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 border-t-[4px] border-b-[4px] border-l-[5px] border-t-transparent border-b-transparent border-l-background" />
+                </div>
+              </div>
+
+              {/* DeFi Box */}
+              <div className="flex flex-col items-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-background bg-foreground shadow-[3px_3px_0px_0px_rgba(240,235,226,0.3)]">
+                  <span className="text-[10px] font-bold text-background">DeFi</span>
+                </div>
+              </div>
             </div>
           </div>
 
