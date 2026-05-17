@@ -1,6 +1,8 @@
 "use client";
 
-const chains = [
+import { useState } from "react";
+
+const allChains = [
   {
     name: "Flare",
     description: "Private DeFi execution layer powered by Flare Confidential Compute",
@@ -8,7 +10,6 @@ const chains = [
     href: "/flare",
     comingSoon: false,
     tags: ["EVM", "TEE"],
-    glow: "shadow-[0_0_30px_rgba(230,32,88,0.15)]",
     borderHover: "hover:border-[#E62058]/30",
   },
   {
@@ -18,7 +19,6 @@ const chains = [
     href: "#",
     comingSoon: true,
     tags: ["EVM"],
-    glow: "shadow-[0_0_30px_rgba(139,92,246,0.1)]",
     borderHover: "hover:border-purple-500/30",
   },
   {
@@ -28,12 +28,20 @@ const chains = [
     href: "#",
     comingSoon: true,
     tags: ["EVM"],
-    glow: "shadow-[0_0_30px_rgba(255,255,255,0.05)]",
     borderHover: "hover:border-white/20",
   },
 ];
 
+const sortOptions = ["All", "EVM", "Non-EVM", "TEE", "FHE", "ZK"];
+
 export default function ChainsPage() {
+  const [sortOpen, setSortOpen] = useState(false);
+  const [activeSort, setActiveSort] = useState("All");
+
+  const filtered = activeSort === "All"
+    ? allChains
+    : allChains.filter((c) => c.tags.includes(activeSort));
+
   return (
     <div className="min-h-screen bg-[#08080c] text-white">
       {/* Nav */}
@@ -47,7 +55,14 @@ export default function ChainsPage() {
             />
             <span className="text-sm font-semibold">Encrypted Finance</span>
           </a>
-          <a href="/" className="text-xs text-white/30 hover:text-white/60 transition-colors">
+          <a
+            href="/"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-xs text-white/50 hover:text-white/80 hover:border-white/[0.15] transition-colors"
+          >
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 6.5L8 2L14 6.5V13.5C14 14 13.5 14.5 13 14.5H3C2.5 14.5 2 14 2 13.5V6.5Z" />
+              <path d="M6 14.5V8.5H10V14.5" />
+            </svg>
             Home
           </a>
         </div>
@@ -74,64 +89,89 @@ export default function ChainsPage() {
               className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] py-2 pl-9 pr-3 text-xs text-white/70 placeholder:text-white/25 outline-none focus:border-white/[0.15] transition-colors"
             />
           </div>
-          <button className="flex items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-xs text-white/40 hover:text-white/60 transition-colors">
-            Sort by
-            <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+
+          {/* Sort dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setSortOpen(!sortOpen)}
+              className="flex items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-xs text-white/40 hover:text-white/60 transition-colors"
+            >
+              {activeSort === "All" ? "Sort by" : activeSort}
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" className={`transition-transform ${sortOpen ? "rotate-180" : ""}`}>
+                <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            {sortOpen && (
+              <div className="absolute right-0 top-full mt-2 z-50 w-36 rounded-lg border border-white/[0.08] bg-[#12121a] py-1 shadow-xl">
+                {sortOptions.map((opt) => (
+                  <button
+                    key={opt}
+                    onClick={() => { setActiveSort(opt); setSortOpen(false); }}
+                    className={`w-full px-3 py-2 text-left text-xs transition-colors ${
+                      activeSort === opt
+                        ? "text-white bg-white/[0.06]"
+                        : "text-white/40 hover:text-white/70 hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {chains.map((chain) => (
-              <a
-                key={chain.name}
-                href={chain.href}
-                className={`group relative rounded-2xl border border-white/[0.06] bg-[#0e0e14] p-5 transition-all ${chain.borderHover} ${chain.comingSoon ? "" : `hover:${chain.glow}`}`}
-              >
-                {/* Top: logo + tags */}
-                <div className="flex items-start justify-between mb-6">
-                  <img
-                    src={chain.logo}
-                    alt={chain.name}
-                    className="h-11 w-11 rounded-full ring-2 ring-white/[0.06]"
-                  />
-                  <div className="flex gap-1.5">
-                    {chain.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-white/[0.05] px-2 py-0.5 text-[9px] font-medium text-white/40"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+          {filtered.map((chain) => (
+            <a
+              key={chain.name}
+              href={chain.href}
+              className={`group relative rounded-2xl border border-white/[0.06] bg-[#0e0e14] p-5 transition-all ${chain.borderHover} ${chain.comingSoon ? "" : ""}`}
+            >
+              {/* Top: logo + tags */}
+              <div className="flex items-start justify-between mb-6">
+                <img
+                  src={chain.logo}
+                  alt={chain.name}
+                  className="h-11 w-11 rounded-full ring-2 ring-white/[0.06]"
+                />
+                <div className="flex gap-1.5">
+                  {chain.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-white/[0.05] px-2 py-0.5 text-[9px] font-medium text-white/40"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
+              </div>
 
-                {/* Name */}
-                <h3 className="text-[15px] font-bold text-white/90">{chain.name}</h3>
+              {/* Name */}
+              <h3 className="text-[15px] font-bold text-white/90">{chain.name}</h3>
 
-                {/* Description or Coming Soon */}
-                {chain.description ? (
-                  <p className="mt-2 text-[11px] text-white/30 leading-relaxed line-clamp-3">
-                    {chain.description}
-                  </p>
-                ) : (
-                  <p className="mt-2 text-[11px] text-white/20">Coming Soon</p>
-                )}
+              {/* Description or Coming Soon */}
+              {chain.description ? (
+                <p className="mt-2 text-[11px] text-white/30 leading-relaxed line-clamp-3">
+                  {chain.description}
+                </p>
+              ) : (
+                <p className="mt-2 text-[11px] text-white/20">Coming Soon</p>
+              )}
 
-                {/* View link */}
-                {!chain.comingSoon && (
-                  <div className="mt-6 flex items-center gap-1.5 text-[11px] font-semibold text-white/35 group-hover:text-white/70 transition-colors">
-                    VIEW
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:translate-x-0.5">
-                      <path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                )}
-              </a>
-            ))}
+              {/* View link */}
+              {!chain.comingSoon && (
+                <div className="mt-6 flex items-center gap-1.5 text-[11px] font-semibold text-white/35 group-hover:text-white/70 transition-colors">
+                  VIEW
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:translate-x-0.5">
+                    <path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              )}
+            </a>
+          ))}
         </div>
       </div>
     </div>
