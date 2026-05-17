@@ -87,37 +87,14 @@ export function Ecosystem() {
         </div>
       </div>
 
-      {/* Chain details below */}
-      <div className="mx-auto max-w-2xl px-6 mt-12">
-        <div className="flex flex-col gap-6">
-          {chains.map((chain) => (
-            <a
-              key={chain.name}
-              href={chain.href}
-              className="group flex items-center gap-4 transition-opacity hover:opacity-70"
-            >
-              <img
-                src={chain.logo}
-                alt={chain.name}
-                className="h-10 w-10 rounded-full"
-              />
-              <div className="flex-1">
-                <h3 className="text-sm font-semibold text-foreground">{chain.name}</h3>
-                {chain.description && (
-                  <p className="text-xs text-foreground/40">{chain.description}</p>
-                )}
-                {chain.comingSoon && (
-                  <p className="text-xs text-foreground/30">Coming Soon</p>
-                )}
-              </div>
-              {!chain.comingSoon && (
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="text-foreground/20 group-hover:text-foreground/50 transition-colors">
-                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              )}
-            </a>
-          ))}
-        </div>
+      {/* Get Started button */}
+      <div className="mx-auto max-w-4xl px-6 mt-12 text-center">
+        <a
+          href="/chains"
+          className="inline-flex h-11 items-center justify-center rounded-full bg-[#0a0a0a] px-7 text-sm font-medium text-white transition-opacity hover:opacity-80"
+        >
+          Get Started
+        </a>
       </div>
     </section>
   );
