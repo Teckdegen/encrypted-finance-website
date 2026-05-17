@@ -13,12 +13,18 @@ export function Navbar() {
           </span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           <a href="#ecosystem" className="text-sm font-medium text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors">
             Ecosystem
           </a>
           <a href="#community" className="text-sm font-medium text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors">
             Community
+          </a>
+          <a
+            href="/chains"
+            className="inline-flex h-9 items-center rounded-full bg-[#0a0a0a] px-5 text-xs font-semibold text-[#f0ebe2] transition-opacity hover:opacity-80"
+          >
+            Get Started
           </a>
         </div>
       </div>

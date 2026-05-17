@@ -12,6 +12,7 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1635937765534707712/JgfEVRQA_400x400.jpg",
     href: "/flare",
     comingSoon: false,
+    gradient: "from-red-500/10 to-orange-500/5",
   },
   {
     name: "Monad",
@@ -19,6 +20,7 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1967693862559698944/XTfCXXGa_400x400.jpg",
     href: "#",
     comingSoon: true,
+    gradient: "from-purple-500/10 to-indigo-500/5",
   },
   {
     name: "MegaETH",
@@ -26,6 +28,7 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1861751545790070784/KvlxTzAq_400x400.jpg",
     href: "#",
     comingSoon: true,
+    gradient: "from-gray-500/10 to-slate-500/5",
   },
 ];
 
@@ -48,42 +51,51 @@ export default function ChainsPage() {
       </nav>
 
       {/* Content */}
-      <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h1 className="text-3xl font-bold text-[#0a0a0a] md:text-4xl">
-          Choose a chain
-        </h1>
-        <p className="mt-3 text-sm text-[#0a0a0a]/50">
-          Select a chain to learn how Encrypted Finance works on it.
-        </p>
+      <div className="mx-auto max-w-4xl px-6 py-20 md:py-28">
+        <div className="text-center mb-14">
+          <h1 className="text-3xl font-bold text-[#0a0a0a] md:text-4xl">
+            Choose a chain
+          </h1>
+          <p className="mt-3 text-sm text-[#0a0a0a]/50">
+            Select a chain to learn how Encrypted Finance works on it.
+          </p>
+        </div>
 
-        <div className="mt-12 flex flex-col gap-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {chains.map((chain) => (
             <a
               key={chain.name}
               href={chain.href}
-              className={`group flex items-center gap-4 rounded-xl border border-[#0a0a0a]/[0.06] bg-white/50 px-5 py-4 transition-all hover:bg-white/80 hover:border-[#0a0a0a]/[0.1] ${
-                chain.comingSoon ? "opacity-60 pointer-events-none" : ""
+              className={`group relative overflow-hidden rounded-2xl border border-[#0a0a0a]/[0.06] bg-white p-6 transition-all hover:shadow-lg hover:border-[#0a0a0a]/[0.1] hover:-translate-y-1 ${
+                chain.comingSoon ? "opacity-70" : ""
               }`}
             >
-              <img
-                src={chain.logo}
-                alt={chain.name}
-                className="h-10 w-10 rounded-full"
-              />
-              <div className="flex-1">
-                <h3 className="text-sm font-semibold text-[#0a0a0a]">{chain.name}</h3>
+              {/* Gradient bg */}
+              <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${chain.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
+
+              <div className="relative">
+                <img
+                  src={chain.logo}
+                  alt={chain.name}
+                  className="h-14 w-14 rounded-xl mb-5"
+                />
+                <h3 className="text-lg font-bold text-[#0a0a0a]">{chain.name}</h3>
                 {chain.description && (
-                  <p className="text-xs text-[#0a0a0a]/40">{chain.description}</p>
+                  <p className="mt-1 text-xs text-[#0a0a0a]/45 leading-relaxed">{chain.description}</p>
                 )}
                 {chain.comingSoon && (
-                  <p className="text-xs text-[#0a0a0a]/30">Coming Soon</p>
+                  <p className="mt-1 text-xs text-[#0a0a0a]/30">Coming Soon</p>
+                )}
+
+                {!chain.comingSoon && (
+                  <div className="mt-5 flex items-center gap-1 text-xs font-medium text-[#0a0a0a]/50 group-hover:text-[#0a0a0a]/80 transition-colors">
+                    Learn more
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5">
+                      <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
                 )}
               </div>
-              {!chain.comingSoon && (
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="text-[#0a0a0a]/20 group-hover:text-[#0a0a0a]/50 transition-colors">
-                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              )}
             </a>
           ))}
         </div>

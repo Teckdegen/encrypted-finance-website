@@ -87,15 +87,6 @@ export function Ecosystem() {
         </div>
       </div>
 
-      {/* Get Started button */}
-      <div className="mx-auto max-w-4xl px-6 mt-12 text-center">
-        <a
-          href="/chains"
-          className="inline-flex h-11 items-center justify-center rounded-full bg-[#0a0a0a] px-7 text-sm font-medium text-white transition-opacity hover:opacity-80"
-        >
-          Get Started
-        </a>
-      </div>
     </section>
   );
 }
