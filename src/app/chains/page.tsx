@@ -1,18 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Encrypted Finance - Chains",
-  description: "Explore the chains supported by Encrypted Finance.",
-};
+const categories = ["All", "EVM", "Non-EVM", "TEE", "FHE", "ZK"];
 
 const chains = [
   {
     name: "Flare",
-    description: "Private DeFi execution layer powered by FCC",
+    description: "Private DeFi execution layer powered by Flare Confidential Compute",
     logo: "https://pbs.twimg.com/profile_images/1635937765534707712/JgfEVRQA_400x400.jpg",
     href: "/flare",
     comingSoon: false,
-    gradient: "from-red-500/10 to-orange-500/5",
+    tags: ["EVM", "TEE"],
   },
   {
     name: "Monad",
@@ -20,7 +20,7 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1967693862559698944/XTfCXXGa_400x400.jpg",
     href: "#",
     comingSoon: true,
-    gradient: "from-purple-500/10 to-indigo-500/5",
+    tags: ["EVM"],
   },
   {
     name: "MegaETH",
@@ -28,76 +28,120 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1861751545790070784/KvlxTzAq_400x400.jpg",
     href: "#",
     comingSoon: true,
-    gradient: "from-gray-500/10 to-slate-500/5",
+    tags: ["EVM"],
   },
 ];
 
 export default function ChainsPage() {
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filtered = activeFilter === "All"
+    ? chains
+    : chains.filter((c) => c.tags.includes(activeFilter));
+
   return (
-    <div className="min-h-screen bg-[#f0ebe2]">
+    <div className="min-h-screen bg-[#0a0a0f] text-white">
       {/* Nav */}
-      <nav className="px-6 py-5 md:px-12 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2">
-          <img
-            src="https://pbs.twimg.com/profile_images/2052396648999923715/s8bKFJnU_400x400.jpg"
-            alt="Logo"
-            className="h-7 w-7 rounded-full"
-          />
-          <span className="text-sm font-semibold text-[#0a0a0a]">Encrypted Finance</span>
-        </a>
-        <a href="/" className="text-xs text-[#0a0a0a]/40 hover:text-[#0a0a0a]/70 transition-colors">
-          Home
-        </a>
+      <nav className="border-b border-white/[0.06] px-6 py-4 md:px-12">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
+          <a href="/" className="flex items-center gap-2">
+            <img
+              src="https://pbs.twimg.com/profile_images/2052396648999923715/s8bKFJnU_400x400.jpg"
+              alt="Logo"
+              className="h-7 w-7 rounded-full"
+            />
+            <span className="text-sm font-semibold">Encrypted Finance</span>
+          </a>
+          <a href="/" className="text-xs text-white/30 hover:text-white/60 transition-colors">
+            Home
+          </a>
+        </div>
       </nav>
 
-      {/* Content */}
-      <div className="mx-auto max-w-4xl px-6 py-20 md:py-28">
-        <div className="text-center mb-14">
-          <h1 className="text-3xl font-bold text-[#0a0a0a] md:text-4xl">
-            Choose a chain
-          </h1>
-          <p className="mt-3 text-sm text-[#0a0a0a]/50">
-            Select a chain to learn how Encrypted Finance works on it.
-          </p>
-        </div>
+      <div className="mx-auto max-w-6xl px-6 py-16 md:px-12 md:py-20">
+        {/* Header */}
+        <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+          Our Ecosystem
+        </h1>
+        <p className="mt-3 text-sm text-white/40">
+          Explore the chains where Encrypted Finance brings private infrastructure.
+        </p>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {chains.map((chain) => (
-            <a
-              key={chain.name}
-              href={chain.href}
-              className={`group relative overflow-hidden rounded-2xl border border-[#0a0a0a]/[0.06] bg-white p-6 transition-all hover:shadow-lg hover:border-[#0a0a0a]/[0.1] hover:-translate-y-1 ${
-                chain.comingSoon ? "opacity-70" : ""
-              }`}
-            >
-              {/* Gradient bg */}
-              <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${chain.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
+        {/* Layout: filters sidebar + cards grid */}
+        <div className="mt-12 flex flex-col gap-8 md:flex-row">
+          {/* Filters sidebar */}
+          <aside className="shrink-0 md:w-[180px]">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-white/30 mb-3">Category</p>
+            <div className="flex flex-wrap gap-2 md:flex-col md:gap-1">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`rounded-md px-3 py-1.5 text-xs text-left transition-colors ${
+                    activeFilter === cat
+                      ? "bg-white/[0.08] text-white font-medium"
+                      : "text-white/40 hover:text-white/70 hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </aside>
 
-              <div className="relative">
-                <img
-                  src={chain.logo}
-                  alt={chain.name}
-                  className="h-14 w-14 rounded-xl mb-5"
-                />
-                <h3 className="text-lg font-bold text-[#0a0a0a]">{chain.name}</h3>
-                {chain.description && (
-                  <p className="mt-1 text-xs text-[#0a0a0a]/45 leading-relaxed">{chain.description}</p>
+          {/* Cards grid */}
+          <div className="flex-1 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((chain) => (
+              <a
+                key={chain.name}
+                href={chain.href}
+                className={`group rounded-2xl border border-white/[0.06] bg-[#12121a] p-5 transition-all hover:border-white/[0.12] hover:bg-[#181824] ${
+                  chain.comingSoon ? "opacity-60" : ""
+                }`}
+              >
+                {/* Top: logo + tags */}
+                <div className="flex items-start justify-between mb-5">
+                  <img
+                    src={chain.logo}
+                    alt={chain.name}
+                    className="h-10 w-10 rounded-xl"
+                  />
+                  <div className="flex gap-1.5">
+                    {chain.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-white/[0.06] px-2 py-0.5 text-[10px] font-medium text-white/40"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Name */}
+                <h3 className="text-base font-bold text-white/90">{chain.name}</h3>
+
+                {/* Description or Coming Soon */}
+                {chain.description ? (
+                  <p className="mt-1.5 text-xs text-white/35 leading-relaxed line-clamp-2">
+                    {chain.description}
+                  </p>
+                ) : (
+                  <p className="mt-1.5 text-xs text-white/25">Coming Soon</p>
                 )}
-                {chain.comingSoon && (
-                  <p className="mt-1 text-xs text-[#0a0a0a]/30">Coming Soon</p>
-                )}
 
+                {/* View link */}
                 {!chain.comingSoon && (
-                  <div className="mt-5 flex items-center gap-1 text-xs font-medium text-[#0a0a0a]/50 group-hover:text-[#0a0a0a]/80 transition-colors">
-                    Learn more
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5">
-                      <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <div className="mt-5 flex items-center gap-1 text-xs font-medium text-white/40 group-hover:text-white/70 transition-colors">
+                    VIEW
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:translate-x-0.5">
+                      <path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                 )}
-              </div>
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>
