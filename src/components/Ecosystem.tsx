@@ -5,7 +5,6 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1635937765534707712/JgfEVRQA_400x400.jpg",
     href: "/flare",
     status: "Live",
-    statusColor: "bg-green-500",
     nameColor: "text-red-500",
   },
   {
@@ -14,7 +13,6 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1967693862559698944/XTfCXXGa_400x400.jpg",
     href: "#",
     status: "Coming Soon",
-    statusColor: "bg-white/20",
     nameColor: "text-purple-400",
   },
   {
@@ -23,7 +21,6 @@ const chains = [
     logo: "https://pbs.twimg.com/profile_images/1861751545790070784/KvlxTzAq_400x400.jpg",
     href: "#",
     status: "Coming Soon",
-    statusColor: "bg-white/20",
     nameColor: "text-white",
   },
 ];
@@ -48,34 +45,31 @@ export function Ecosystem() {
             <a
               key={chain.name}
               href={chain.href}
-              className="group flex-shrink-0 w-[300px] md:w-auto snap-start rounded-2xl bg-[#111115] border border-white/[0.06] p-8 transition-all hover:border-white/[0.12] hover:bg-[#161620]"
+              className="group flex-shrink-0 w-[240px] md:w-auto snap-start rounded-2xl bg-[#111115] border border-white/[0.06] p-5 transition-all hover:border-white/[0.12] hover:bg-[#161620]"
             >
               {/* Logo */}
               <img
                 src={chain.logo}
                 alt={chain.name}
-                className="h-16 w-16 rounded-2xl mb-6"
+                className="h-12 w-12 rounded-xl mb-4"
               />
 
               {/* Name */}
-              <h3 className={`text-2xl font-bold mb-2 ${chain.nameColor}`}>
+              <h3 className={`text-lg font-bold mb-1 ${chain.nameColor}`}>
                 {chain.name}
               </h3>
 
               {/* Description */}
-              <p className="text-sm text-white/40 leading-relaxed mb-6">
+              <p className="text-xs text-white/40 leading-relaxed mb-4">
                 {chain.description}
               </p>
 
-              {/* Status + Arrow */}
+              {/* Status text + Arrow */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className={`h-2 w-2 rounded-full ${chain.statusColor}`} />
-                  <span className="text-xs text-white/40 font-medium">{chain.status}</span>
-                </div>
+                <span className="text-[11px] text-white/30">{chain.status}</span>
                 <svg
-                  width="16"
-                  height="16"
+                  width="14"
+                  height="14"
                   viewBox="0 0 16 16"
                   fill="none"
                   className="text-white/20 transition-all group-hover:text-white/50 group-hover:translate-x-0.5"
