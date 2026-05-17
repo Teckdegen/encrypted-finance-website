@@ -1,9 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
-const categories = ["All", "EVM", "Non-EVM", "TEE", "FHE", "ZK"];
-
 const chains = [
   {
     name: "Flare",
@@ -38,12 +34,6 @@ const chains = [
 ];
 
 export default function ChainsPage() {
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const filtered = activeFilter === "All"
-    ? chains
-    : chains.filter((c) => c.tags.includes(activeFilter));
-
   return (
     <div className="min-h-screen bg-[#08080c] text-white">
       {/* Nav */}
@@ -71,43 +61,30 @@ export default function ChainsPage() {
           </h1>
         </div>
 
-        {/* Layout */}
-        <div className="flex flex-col gap-8 md:flex-row">
-          {/* Filters */}
-          <aside className="shrink-0 md:w-[180px]">
-            <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-              <div className="flex items-center justify-between mb-3">
-                <p className="text-xs font-bold text-white/60">Filters</p>
-                <button
-                  onClick={() => setActiveFilter("All")}
-                  className="text-[10px] text-white/30 hover:text-white/60 transition-colors"
-                >
-                  RESET
-                </button>
-              </div>
-              <p className="text-[10px] uppercase tracking-wider text-white/25 mb-2">Category</p>
-              <div className="flex flex-wrap gap-1.5 md:flex-col md:gap-0">
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setActiveFilter(cat)}
-                    className={`flex items-center gap-2 rounded-md px-2.5 py-1.5 text-[12px] text-left transition-colors ${
-                      activeFilter === cat
-                        ? "text-white font-medium"
-                        : "text-white/35 hover:text-white/60"
-                    }`}
-                  >
-                    <span className={`h-3 w-3 rounded-sm border ${activeFilter === cat ? "border-white/60 bg-white/20" : "border-white/15"}`} />
-                    {cat}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </aside>
+        {/* Search + Sort bar */}
+        <div className="flex items-center justify-between gap-4 mb-10">
+          <div className="relative flex-1 max-w-[260px]">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="absolute left-3 top-1/2 -translate-y-1/2 text-white/25">
+              <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] py-2 pl-9 pr-3 text-xs text-white/70 placeholder:text-white/25 outline-none focus:border-white/[0.15] transition-colors"
+            />
+          </div>
+          <button className="flex items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-xs text-white/40 hover:text-white/60 transition-colors">
+            Sort by
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
 
-          {/* Cards */}
-          <div className="flex-1 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((chain) => (
+        {/* Cards */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {chains.map((chain) => (
               <a
                 key={chain.name}
                 href={chain.href}
@@ -155,7 +132,6 @@ export default function ChainsPage() {
                 )}
               </a>
             ))}
-          </div>
         </div>
       </div>
     </div>
