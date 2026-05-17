@@ -8,8 +8,11 @@ const nav = [
   { id: "problem", label: "The Problem", icon: "alert" },
   { id: "how-it-works", label: "How It Works", icon: "gear" },
   { id: "privacy-stack", label: "FCC", icon: "lock" },
+  { id: "flare-infra", label: "Flare Infrastructure", icon: "gear" },
   { id: "selective-disclosure", label: "Selective Disclosure", icon: "eye" },
   { id: "features", label: "What's Private", icon: "eye" },
+  { id: "security", label: "Security", icon: "lock" },
+  { id: "gas", label: "Gas", icon: "gear" },
   { id: "faq", label: "FAQ", icon: "question" },
 ];
 
@@ -216,6 +219,30 @@ export default function FlarePage() {
 
         <Hr />
 
+        {/* Flare Infrastructure */}
+        <Section id="flare-infra">
+          <h2 className="text-[20px] font-bold">Built on Flare&apos;s Native Infrastructure</h2>
+          <p className="mt-4 text-[14px] text-white/50 leading-[1.8]">
+            We are not bolting privacy onto Flare as an afterthought. We are built directly on Flare&apos;s core protocols.
+          </p>
+          <div className="mt-6 space-y-4">
+            <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">
+              <h3 className="text-[13px] font-bold text-white/80">FCC (Flare Confidential Compute)</h3>
+              <p className="mt-1 text-[12px] text-white/35 leading-[1.7]">The engine. Your instructions execute inside tamper-proof hardware that nobody can peek into. Not us, not validators, not anyone.</p>
+            </div>
+            <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">
+              <h3 className="text-[13px] font-bold text-white/80">FTSO (Flare Time Series Oracle)</h3>
+              <p className="mt-1 text-[12px] text-white/35 leading-[1.7]">Real-time price feeds. Your swaps and limit orders use live oracle prices without revealing your trading strategy.</p>
+            </div>
+            <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">
+              <h3 className="text-[13px] font-bold text-white/80">FDC (Flare Data Connector)</h3>
+              <p className="mt-1 text-[12px] text-white/35 leading-[1.7]">Cross-chain verification. Prove things happened on Bitcoin, XRP Ledger, or other chains without exposing who is asking.</p>
+            </div>
+          </div>
+        </Section>
+
+        <Hr />
+
         {/* Selective Disclosure */}
         <Section id="selective-disclosure">
           <h2 className="text-[20px] font-bold">Selective Disclosure</h2>
@@ -247,8 +274,34 @@ export default function FlarePage() {
             <Feature title="Governance" desc="Vote without revealing your position." />
             <Feature title="Messaging" desc="Wallet-to-wallet. End-to-end encrypted." />
             <Feature title="Limit Orders" desc="Oracle-protected. No one sees your levels." />
+            <Feature title="Dark Pools" desc="Place large trades without moving the market. Sealed-bid auctions where nobody sees bids until reveal." />
             <Feature title="Delegation" desc="Wrap, delegate, claim. No public trace." />
           </div>
+        </Section>
+
+        <Hr />
+
+        {/* Security */}
+        <Section id="security">
+          <h2 className="text-[20px] font-bold">Security</h2>
+          <p className="mt-4 text-[14px] text-white/50 leading-[1.8]">
+            This is not custodial. We never hold your keys.
+          </p>
+          <div className="mt-6 space-y-3">
+            <Feature title="Your spending key stays on your device" desc="We never see it." />
+            <Feature title="If we go down, you do not lose anything" desc="Your funds are encrypted on-chain. Your key decrypts them. You can always recover." />
+            <Feature title="Nobody can move your funds without your signature" desc="Not us, not the hardware, not anyone." />
+          </div>
+        </Section>
+
+        <Hr />
+
+        {/* Gas */}
+        <Section id="gas">
+          <h2 className="text-[20px] font-bold">Gas</h2>
+          <p className="mt-4 text-[14px] text-white/50 leading-[1.8]">
+            You pay gas once, on your deposit. After that, we cover all gas costs from a small relay fee (0.2 to 0.5% per transaction). You never need to hold FLR for gas again.
+          </p>
         </Section>
 
         <Hr />
@@ -263,6 +316,8 @@ export default function FlarePage() {
             <Faq q="What if your system goes down?" a="Your funds are always safe. Your spending key plus on-chain encrypted notes equals full recovery. We can never lock you out." />
             <Faq q="Why only Flare?" a="Flare has native Confidential Compute built into the network. Hardware-level privacy that other chains do not offer natively yet." />
             <Faq q="Is this custodial?" a="No. The FCC cannot move funds without your signature. Your keys, your funds." />
+            <Faq q="Is this a mixer?" a="No. Mixers just shuffle tokens between wallets. Encrypted Finance is a full DeFi layer. You can swap, lend, stake, bridge, vote, and message without ever leaving privacy." />
+            <Faq q="Who is behind the trades?" a="A shared execution wallet. Protocols like SparkDEX see that wallet, not you. There is no way to link a trade back to your address." />
           </div>
         </Section>
 
