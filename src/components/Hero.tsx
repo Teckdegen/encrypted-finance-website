@@ -193,6 +193,14 @@ export function Hero() {
             &gt;
           </span>
         </div>
+
+        {/* Get Started button - mobile only */}
+        <a
+          href="/chains"
+          className="mt-8 inline-flex h-10 items-center rounded-full bg-[#0a0a0a] px-6 text-xs font-semibold text-[#f0ebe2] transition-opacity hover:opacity-80 md:hidden"
+        >
+          Get Started
+        </a>
       </div>
     </section>
   );
