@@ -1,179 +1,122 @@
 "use client";
 
 import { useState } from "react";
+import { DocsShell } from "@/components/docs/DocsShell";
 
-const allChains = [
+const nav = [
+  { id: "introduction", label: "Introduction", icon: "home" },
+  { id: "flare", label: "Flare", icon: "link" },
+  { id: "monad", label: "Monad", icon: "link" },
+  { id: "megaeth", label: "MegaETH", icon: "link" },
+];
+
+const chains = [
   {
+    id: "flare",
     name: "Flare",
-    description: "Private DeFi execution layer powered by Flare Confidential Compute",
-    logo: "https://pbs.twimg.com/profile_images/1635937765534707712/JgfEVRQA_400x400.jpg",
+    description: "Private DeFi execution layer powered by Flare Confidential Compute.",
     href: "/flare",
-    comingSoon: false,
     tags: ["EVM", "TEE"],
-    borderHover: "hover:border-[#E62058]/30",
+    live: true,
+    logo: "https://pbs.twimg.com/profile_images/1635937765534707712/JgfEVRQA_400x400.jpg",
   },
   {
+    id: "monad",
     name: "Monad",
-    description: "",
-    logo: "https://pbs.twimg.com/profile_images/1967693862559698944/XTfCXXGa_400x400.jpg",
+    description: "High-performance EVM chain with private financial infrastructure coming soon.",
     href: "#",
-    comingSoon: true,
     tags: ["EVM"],
-    borderHover: "hover:border-purple-500/30",
+    live: false,
+    logo: "https://pbs.twimg.com/profile_images/1967693862559698944/XTfCXXGa_400x400.jpg",
   },
   {
+    id: "megaeth",
     name: "MegaETH",
-    description: "",
-    logo: "https://pbs.twimg.com/profile_images/1861751545790070784/KvlxTzAq_400x400.jpg",
+    description: "Real-time Ethereum L2 with encrypted finance support coming soon.",
     href: "#",
-    comingSoon: true,
     tags: ["EVM"],
-    borderHover: "hover:border-white/20",
+    live: false,
+    logo: "https://pbs.twimg.com/profile_images/1861751545790070784/KvlxTzAq_400x400.jpg",
   },
 ];
 
-const sortOptions = ["All", "EVM", "Non-EVM", "TEE", "FHE", "ZK"];
-
 export default function ChainsPage() {
-  const [sortOpen, setSortOpen] = useState(false);
-  const [activeSort, setActiveSort] = useState("All");
-
-  const filtered = activeSort === "All"
-    ? allChains
-    : allChains.filter((c) => c.tags.includes(activeSort));
+  const [active, setActive] = useState("introduction");
 
   return (
-    <div className="min-h-screen bg-[#08080c] text-white">
-      {/* Nav */}
-      <nav className="border-b border-white/[0.04] px-6 py-4 md:px-12">
-        <div className="mx-auto flex max-w-6xl items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
-            <img
-              src="https://pbs.twimg.com/profile_images/2052396648999923715/s8bKFJnU_400x400.jpg"
-              alt="Logo"
-              className="h-7 w-7 rounded-full"
-            />
-            <span className="text-sm font-semibold">Encrypted Finance</span>
-          </a>
-          <a
-            href="/"
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-xs text-white/50 hover:text-white/80 hover:border-white/[0.15] transition-colors"
-          >
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M2 6.5L8 2L14 6.5V13.5C14 14 13.5 14.5 13 14.5H3C2.5 14.5 2 14 2 13.5V6.5Z" />
-              <path d="M6 14.5V8.5H10V14.5" />
-            </svg>
-            Home
-          </a>
-        </div>
-      </nav>
+    <DocsShell
+      nav={nav}
+      toc={nav}
+      active={active}
+      onActiveChange={setActive}
+    >
+      <section id="introduction" className="scroll-mt-20 py-6">
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground/45">
+          Get Started
+        </p>
+        <h1 className="font-serif text-[32px] leading-tight md:text-[38px]">
+          Supported Chains
+        </h1>
+        <p className="mt-5 text-[15px] leading-[1.8] text-foreground/55">
+          Build private applications on public blockchains. Encrypted Finance adapts its privacy layer to each ecosystem while preserving how the underlying networks operate.
+        </p>
+        <p className="mt-3 text-[15px] leading-[1.8] text-foreground/55">
+          Select a chain below to read the documentation and integration details for that network.
+        </p>
+      </section>
 
-      <div className="mx-auto max-w-6xl px-6 py-14 md:px-12 md:py-20">
-        {/* Header */}
-        <div className="text-center mb-14">
-          <h1 className="text-3xl font-medium tracking-tight md:text-[2.5rem]">
-            Our Ecosystem
-          </h1>
-        </div>
+      <hr className="my-2 border-foreground/10" />
 
-        {/* Search + Sort bar */}
-        <div className="flex items-center justify-between gap-4 mb-10">
-          <div className="relative flex-1 max-w-[260px]">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="absolute left-3 top-1/2 -translate-y-1/2 text-white/25">
-              <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] py-2 pl-9 pr-3 text-xs text-white/70 placeholder:text-white/25 outline-none focus:border-white/[0.15] transition-colors"
-            />
-          </div>
-
-          {/* Sort dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setSortOpen(!sortOpen)}
-              className="flex items-center gap-1.5 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-xs text-white/40 hover:text-white/60 transition-colors"
-            >
-              {activeSort === "All" ? "Sort by" : activeSort}
-              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" className={`transition-transform ${sortOpen ? "rotate-180" : ""}`}>
-                <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            {sortOpen && (
-              <div className="absolute right-0 top-full mt-2 z-50 w-36 rounded-lg border border-white/[0.08] bg-[#12121a] py-1 shadow-xl">
-                {sortOptions.map((opt) => (
-                  <button
-                    key={opt}
-                    onClick={() => { setActiveSort(opt); setSortOpen(false); }}
-                    className={`w-full px-3 py-2 text-left text-xs transition-colors ${
-                      activeSort === opt
-                        ? "text-white bg-white/[0.06]"
-                        : "text-white/40 hover:text-white/70 hover:bg-white/[0.04]"
-                    }`}
-                  >
-                    {opt}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Cards */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((chain) => (
-            <a
-              key={chain.name}
-              href={chain.href}
-              className={`group relative rounded-2xl border border-white/[0.06] bg-[#0e0e14] p-5 transition-all ${chain.borderHover} ${chain.comingSoon ? "" : ""}`}
-            >
-              {/* Top: logo + tags */}
-              <div className="flex items-start justify-between mb-6">
+      {chains.map((chain) => (
+        <section key={chain.id} id={chain.id} className="scroll-mt-20 py-6">
+          <div className="rounded-2xl border border-foreground/10 bg-surface/40 p-6 md:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-start gap-4">
                 <img
                   src={chain.logo}
                   alt={chain.name}
-                  className="h-11 w-11 rounded-full ring-2 ring-white/[0.06]"
+                  className="h-11 w-11 rounded-full ring-1 ring-foreground/10"
                 />
-                <div className="flex gap-1.5">
-                  {chain.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-white/[0.05] px-2 py-0.5 text-[9px] font-medium text-white/40"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div>
+                  <h2 className="font-serif text-[24px]">{chain.name}</h2>
+                  <p className="mt-2 max-w-lg text-[14px] leading-[1.7] text-foreground/55">
+                    {chain.description}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {chain.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-foreground/[0.05] px-2.5 py-0.5 text-[10px] font-medium text-foreground/45"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              {/* Name */}
-              <h3 className="text-[15px] font-bold text-white/90">{chain.name}</h3>
-
-              {/* Description or Coming Soon */}
-              {chain.description ? (
-                <p className="mt-2 text-[11px] text-white/30 leading-relaxed line-clamp-3">
-                  {chain.description}
-                </p>
-              ) : (
-                <p className="mt-2 text-[11px] text-white/20">Coming Soon</p>
-              )}
-
-              {/* View link */}
-              {!chain.comingSoon && (
-                <div className="mt-6 flex items-center gap-1.5 text-[11px] font-semibold text-white/35 group-hover:text-white/70 transition-colors">
-                  VIEW
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="transition-transform group-hover:translate-x-0.5">
-                    <path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              {chain.live ? (
+                <a
+                  href={chain.href}
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-foreground/15 px-4 py-2 text-[11px] font-semibold text-foreground/70 transition-colors hover:border-foreground/25 hover:text-foreground"
+                >
+                  View docs
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 6H9M9 6L6.5 3.5M9 6L6.5 8.5" />
                   </svg>
-                </div>
+                </a>
+              ) : (
+                <span className="shrink-0 rounded-full bg-foreground/[0.05] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-foreground/35">
+                  Coming soon
+                </span>
               )}
-            </a>
-          ))}
-        </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <div className="mt-14 border-t border-foreground/10 pt-6">
+        <p className="text-[11px] text-foreground/30">2026 Encrypted Finance.</p>
       </div>
-    </div>
+    </DocsShell>
   );
 }

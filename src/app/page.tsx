@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { CoreIntro } from "@/components/CoreIntro";
 import { PrivacyPhilosophy } from "@/components/PrivacyPhilosophy";
-import { Ecosystem } from "@/components/Ecosystem";
+import { PrivacyComparison } from "@/components/PrivacyComparison";
 import { Community } from "@/components/Community";
 import { ClosingStatement } from "@/components/ClosingStatement";
 import { Navbar } from "@/components/Navbar";
@@ -16,7 +16,7 @@ export default function Home() {
         <div className="bg-background bg-grid">
           <CoreIntro />
           <PrivacyPhilosophy />
-          <Ecosystem />
+          <PrivacyComparison />
         </div>
         {/* Light sections */}
         <Community />
