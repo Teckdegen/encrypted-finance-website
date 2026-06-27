@@ -73,7 +73,7 @@ export function Hero() {
           {/* Bottom orb */}
           <div className="pointer-events-none absolute bottom-0 left-1/2 h-[55%] w-[130%] max-w-[720px] -translate-x-1/2 translate-y-[58%] rounded-full bg-[radial-gradient(circle_at_50%_30%,rgba(240,235,226,0.14),rgba(240,235,226,0.04)_45%,transparent_70%)] sm:w-[110%]" />
 
-          {/* Main text */}
+          {/* Main content */}
           <div className="relative z-10 w-full px-4 py-16 text-center sm:px-8 sm:py-20">
             <span className="sr-only">&lt;/ENCRYPTED&gt;</span>
             <h1 aria-hidden="true" className="flex items-center justify-center whitespace-nowrap font-sans font-bold leading-none tracking-[-0.04em] text-[#f0ebe2]">
@@ -93,6 +93,17 @@ export function Hero() {
                 &gt;
               </span>
             </h1>
+
+            <p className="mt-5 text-[clamp(0.75rem,2.8vw,1.125rem)] font-medium tracking-wide text-[#f0ebe2]/50 sm:mt-6">
+              the Encrypted layer
+            </p>
+
+            <a
+              href="/chains"
+              className="mt-6 inline-flex h-10 items-center rounded-full bg-[#f0ebe2] px-7 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#111110] transition-opacity hover:opacity-85 sm:mt-8 sm:h-11 sm:px-9 sm:text-xs"
+            >
+              Get Started
+            </a>
           </div>
         </div>
       </div>
