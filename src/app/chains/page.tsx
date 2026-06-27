@@ -33,17 +33,8 @@ const chains = [
 export default function ChainsPage() {
   return (
     <div className="min-h-screen bg-surface-light text-foreground">
-      <header className="sticky top-0 z-50 flex h-14 items-center justify-between border-b border-foreground/10 bg-surface-light/90 px-4 backdrop-blur-md md:px-6">
+      <header className="sticky top-0 z-50 flex h-14 items-center border-b border-foreground/10 bg-surface-light/90 px-4 backdrop-blur-md md:px-6">
         <SiteLogo />
-        <a
-          href="/"
-          className="inline-flex items-center gap-1 rounded-full border border-foreground/15 px-3.5 py-1.5 text-[11px] font-medium text-foreground/60 transition-colors hover:border-foreground/25 hover:text-foreground"
-        >
-          Website
-          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M4 6H9M9 6L6.5 3.5M9 6L6.5 8.5" />
-          </svg>
-        </a>
       </header>
 
       <main className="mx-auto w-full max-w-3xl px-6 py-10 md:px-10 md:py-14">

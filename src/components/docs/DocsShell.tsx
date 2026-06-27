@@ -137,21 +137,11 @@ export function DocsShell({
       {/* Top bar */}
       <header className="sticky top-0 z-50 flex h-14 items-center justify-between border-b border-foreground/10 bg-surface-light/90 px-4 backdrop-blur-md md:px-6">
         <SiteLogo />
-        <div className="flex items-center gap-3">
-          <a
-            href="/"
-            className="inline-flex items-center gap-1 rounded-full border border-foreground/15 px-3.5 py-1.5 text-[11px] font-medium text-foreground/60 transition-colors hover:border-foreground/25 hover:text-foreground"
-          >
-            Website
-            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 6H9M9 6L6.5 3.5M9 6L6.5 8.5" />
-            </svg>
-          </a>
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-foreground/[0.05] md:hidden"
-            aria-label="Toggle menu"
-          >
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-foreground/[0.05] md:hidden"
+          aria-label="Toggle menu"
+        >
             {mobileMenuOpen ? (
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                 <path d="M4 4L12 12M12 4L4 12" />
@@ -162,7 +152,6 @@ export function DocsShell({
               </svg>
             )}
           </button>
-        </div>
       </header>
 
       <div className="mx-auto flex max-w-7xl">
