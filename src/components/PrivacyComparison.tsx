@@ -25,24 +25,45 @@ function TxValue({
 }) {
   return (
     <span
-      className={`font-mono text-sm tabular-nums ${
+      className={`block min-w-0 truncate text-right font-mono text-[11px] tabular-nums sm:text-sm ${
         isStatus ? "text-emerald-700" : "text-foreground"
-      } ${blurred ? "blur-[6px] select-none" : ""}`}
+      } ${blurred ? "blur-[5px] select-none sm:blur-[6px]" : ""}`}
     >
       {value}
     </span>
   );
 }
 
+function DataRow({
+  label,
+  valueKey,
+  blurred,
+}: {
+  label: string;
+  valueKey: keyof typeof txData;
+  blurred?: boolean;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-4 px-4 py-3.5 sm:px-6 sm:py-4">
+      <span className="shrink-0 text-xs text-foreground/45 sm:text-sm">{label}</span>
+      <TxValue
+        value={txData[valueKey]}
+        blurred={blurred}
+        isStatus={valueKey === "status"}
+      />
+    </div>
+  );
+}
+
 export function PrivacyComparison() {
   return (
-    <section id="privacy" className="relative px-6 py-24 md:py-32">
+    <section id="privacy" className="relative px-4 py-24 sm:px-6 md:py-32">
       <div className="mx-auto max-w-3xl">
-        <div className="mb-12 text-center md:mb-16">
+        <div className="mb-10 text-center sm:mb-12 md:mb-16">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-foreground/60">
             See the difference
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
             Privacy by default
           </h2>
           <p className="mt-4 text-sm text-foreground/50 md:text-base">
@@ -50,22 +71,55 @@ export function PrivacyComparison() {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-surface-light">
-          {/* Column headers */}
-          <div className="grid grid-cols-2 border-b border-foreground/10">
-            <div className="border-r border-foreground/10 px-5 py-4 md:px-8 md:py-5">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-foreground/45 md:text-xs">
+        {/* Mobile: stacked blocks */}
+        <div className="space-y-4 md:hidden">
+          <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-surface-light">
+            <div className="border-b border-foreground/10 px-4 py-3.5 sm:px-6 sm:py-4">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-foreground/45">
                 Public Chains
               </span>
             </div>
-            <div className="px-5 py-4 md:px-8 md:py-5">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-foreground/45 md:text-xs">
+            <div className="divide-y divide-foreground/10">
+              {rows.map((row) => (
+                <DataRow key={`public-${row.label}`} label={row.label} valueKey={row.key} />
+              ))}
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-surface-light">
+            <div className="border-b border-foreground/10 px-4 py-3.5 sm:px-6 sm:py-4">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-foreground/45">
+                Encrypted Finance
+              </span>
+            </div>
+            <div className="divide-y divide-foreground/10">
+              {rows.map((row) => (
+                <DataRow
+                  key={`encrypted-${row.label}`}
+                  label={row.label}
+                  valueKey={row.key}
+                  blurred={row.blurred}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: side-by-side columns */}
+        <div className="hidden overflow-hidden rounded-2xl border border-foreground/10 bg-surface-light md:block">
+          <div className="grid grid-cols-2 border-b border-foreground/10">
+            <div className="border-r border-foreground/10 px-8 py-5">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/45">
+                Public Chains
+              </span>
+            </div>
+            <div className="px-8 py-5">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/45">
                 Encrypted Finance
               </span>
             </div>
           </div>
 
-          {/* Data rows */}
           {rows.map((row, i) => (
             <div
               key={row.label}
@@ -73,22 +127,12 @@ export function PrivacyComparison() {
                 i < rows.length - 1 ? "border-b border-foreground/10" : ""
               }`}
             >
-              {/* Public column */}
-              <div className="flex items-center justify-between gap-3 border-r border-foreground/10 px-5 py-4 md:px-8 md:py-5">
-                <span className="shrink-0 text-xs text-foreground/45 md:text-sm">
-                  {row.label}
-                </span>
-                <TxValue
-                  value={txData[row.key]}
-                  isStatus={row.key === "status"}
-                />
+              <div className="flex items-center justify-between gap-4 border-r border-foreground/10 px-8 py-5">
+                <span className="shrink-0 text-sm text-foreground/45">{row.label}</span>
+                <TxValue value={txData[row.key]} isStatus={row.key === "status"} />
               </div>
-
-              {/* Encrypted column */}
-              <div className="flex items-center justify-between gap-3 px-5 py-4 md:px-8 md:py-5">
-                <span className="shrink-0 text-xs text-foreground/45 md:text-sm">
-                  {row.label}
-                </span>
+              <div className="flex items-center justify-between gap-4 px-8 py-5">
+                <span className="shrink-0 text-sm text-foreground/45">{row.label}</span>
                 <TxValue
                   value={txData[row.key]}
                   blurred={row.blurred}
