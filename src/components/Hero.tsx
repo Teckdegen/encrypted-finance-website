@@ -94,13 +94,9 @@ export function Hero() {
               </span>
             </h1>
 
-            <p className="mt-5 text-[clamp(0.75rem,2.8vw,1.125rem)] font-medium tracking-wide text-[#f0ebe2]/50 sm:mt-6">
-              the Encrypted layer
-            </p>
-
             <a
               href="/chains"
-              className="mt-6 inline-flex h-10 items-center rounded-full bg-[#f0ebe2] px-7 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#111110] transition-opacity hover:opacity-85 sm:mt-8 sm:h-11 sm:px-9 sm:text-xs"
+              className="mt-8 inline-flex h-10 items-center rounded-full bg-[#f0ebe2] px-7 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#111110] transition-opacity hover:opacity-85 sm:mt-10 sm:h-11 sm:px-9 sm:text-xs"
             >
               Get Started
             </a>
