@@ -19,8 +19,8 @@ export function Hero() {
           <div className="pointer-events-none absolute bottom-0 left-1/2 h-[55%] w-[130%] max-w-[720px] -translate-x-1/2 translate-y-[58%] rounded-full bg-[radial-gradient(circle_at_50%_30%,rgba(240,235,226,0.14),rgba(240,235,226,0.04)_45%,transparent_70%)] sm:w-[110%]" />
 
           {/* Main content */}
-          <div className="relative z-10 w-full max-w-4xl px-6 py-16 text-left sm:px-12 sm:py-20">
-            <h1 className="font-sans text-[clamp(2.1rem,8vw,4.5rem)] font-semibold leading-[1.15] tracking-[-0.02em]">
+          <div className="relative z-10 w-full max-w-5xl px-6 py-12 text-left sm:px-12 sm:py-14">
+            <h1 className="font-sans text-[clamp(2rem,4.4vw,3.15rem)] font-semibold leading-[1.18] tracking-[-0.02em]">
               <span className="text-[#f0ebe2]">
                 Confidential layer for public chains.
               </span>
