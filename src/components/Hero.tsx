@@ -3,7 +3,7 @@ export function Hero() {
     <section className="relative bg-background bg-grid px-6 pb-20 pt-28 sm:pt-32 md:px-10">
       <div className="mx-auto w-full max-w-6xl">
         <div className="flex min-h-[calc(100dvh-11rem)] flex-col justify-center">
-          <h1 className="font-serif text-[clamp(2.5rem,9vw,7rem)] font-normal uppercase leading-[0.9] tracking-[-0.02em] text-foreground">
+          <h1 className="font-serif text-[clamp(3.5rem,14vw,9.5rem)] font-normal uppercase leading-[0.88] tracking-[-0.02em] text-foreground">
             Encrypted
             <br />
             Finance.

@@ -10,12 +10,19 @@ type Protocol = {
   amount: string;
 };
 
+const UNLINK =
+  "https://www.unlink.xyz/_next/image?w=96&q=75&dpl=dpl_7rFafbVhHEtrx9NBUJCG4KTZRh7i&url=%2Fimages%2Fprotocols%2F";
+
 const protocols: Protocol[] = [
   { id: "lido", name: "Lido", logo: "/protocols/lido.png", action: "Stake ETH", amount: "48.20 ETH" },
   { id: "aave", name: "Aave", logo: "/protocols/aave.png", action: "Supply & borrow", amount: "125,000 USDC" },
   { id: "uniswap", name: "Uniswap", logo: "/protocols/uniswap.jpg", action: "Swap", amount: "12,450 USDC" },
   { id: "morpho", name: "Morpho", logo: "/protocols/morpho.jpg", action: "Lend", amount: "80,000 USDC" },
   { id: "curve", name: "Curve", logo: "/protocols/curve.jpg", action: "Provide liquidity", amount: "64,300 crvUSD" },
+  { id: "compound", name: "Compound", logo: `${UNLINK}compound-v3.png`, action: "Supply & borrow", amount: "60,000 USDC" },
+  { id: "euler", name: "Euler", logo: `${UNLINK}euler-v2.png`, action: "Lend", amount: "35,000 USDC" },
+  { id: "pendle", name: "Pendle", logo: "https://icons.llamao.fi/icons/protocols/pendle?w=128&h=128", action: "Trade yield", amount: "22.5 ETH" },
+  { id: "ethena", name: "Ethena", logo: "https://icons.llamao.fi/icons/protocols/ethena?w=128&h=128", action: "Mint USDe", amount: "90,000 USDe" },
 ];
 
 const SCRAMBLE = "0123456789ABCDEF✳✦░▓█";
@@ -34,6 +41,14 @@ export function ConfidentialProtocols() {
   const [cipher, setCipher] = useState("");
   const p = protocols[active];
 
+  // Auto-cycle through protocols every 2 seconds.
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((a) => (a + 1) % protocols.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
   // Re-run the "encrypting" sequence whenever the selected protocol changes.
   useEffect(() => {
     setEncrypting(true);
@@ -41,9 +56,9 @@ export function ConfidentialProtocols() {
     const scrambleTimer = setInterval(() => {
       setCipher(scramble(18));
       ticks++;
-      if (ticks > 7) clearInterval(scrambleTimer);
+      if (ticks > 6) clearInterval(scrambleTimer);
     }, 70);
-    const done = setTimeout(() => setEncrypting(false), 620);
+    const done = setTimeout(() => setEncrypting(false), 560);
     return () => {
       clearInterval(scrambleTimer);
       clearTimeout(done);
@@ -66,43 +81,50 @@ export function ConfidentialProtocols() {
           </p>
         </div>
 
-        {/* Protocol selector — round logos */}
-        <div className="mb-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        {/* Rotating spotlight — one protocol on the line at a time */}
+        <div className="relative mb-4 flex h-28 items-center justify-center">
           {protocols.map((proto, i) => {
             const isActive = i === active;
             return (
               <button
                 key={proto.id}
                 onClick={() => setActive(i)}
-                aria-pressed={isActive}
                 aria-label={proto.name}
-                className={`group flex flex-col items-center gap-2 transition-transform ${
-                  isActive ? "scale-105" : "opacity-60 hover:opacity-100"
+                aria-hidden={!isActive}
+                tabIndex={isActive ? 0 : -1}
+                className={`absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2.5 transition-all duration-500 ease-out ${
+                  isActive
+                    ? "scale-100 opacity-100"
+                    : "pointer-events-none scale-90 opacity-0"
                 }`}
               >
-                <span
-                  className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-surface-light ring-2 transition-all sm:h-16 sm:w-16 ${
-                    isActive
-                      ? "ring-foreground shadow-lg"
-                      : "ring-foreground/10 group-hover:ring-foreground/30"
-                  }`}
-                >
+                <span className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-surface-light ring-2 ring-foreground shadow-lg sm:h-20 sm:w-20">
                   <img
                     src={proto.logo}
                     alt={proto.name}
                     className="h-full w-full object-cover"
                   />
                 </span>
-                <span
-                  className={`text-[11px] font-medium sm:text-xs ${
-                    isActive ? "text-foreground" : "text-foreground/50"
-                  }`}
-                >
+                <span className="text-sm font-semibold text-foreground sm:text-base">
                   {proto.name}
                 </span>
               </button>
             );
           })}
+        </div>
+
+        {/* Progress dots */}
+        <div className="mb-10 flex items-center justify-center gap-2">
+          {protocols.map((proto, i) => (
+            <button
+              key={proto.id}
+              onClick={() => setActive(i)}
+              aria-label={proto.name}
+              className={`h-1.5 rounded-full transition-all ${
+                i === active ? "w-5 bg-foreground" : "w-1.5 bg-foreground/25 hover:bg-foreground/50"
+              }`}
+            />
+          ))}
         </div>
 
         {/* Confidential terminal card */}
