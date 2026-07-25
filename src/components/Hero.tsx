@@ -20,7 +20,7 @@ export function Hero() {
 
           {/* Main content */}
           <div className="relative z-10 w-full max-w-4xl px-6 py-16 text-left sm:px-12 sm:py-20">
-            <h1 className="font-sans text-[clamp(1.6rem,4.6vw,3.25rem)] font-semibold leading-[1.2] tracking-[-0.02em]">
+            <h1 className="font-sans text-[clamp(2.1rem,8vw,4.5rem)] font-semibold leading-[1.15] tracking-[-0.02em]">
               <span className="text-[#f0ebe2]">
                 Confidential layer for public chains.
               </span>
@@ -30,16 +30,10 @@ export function Hero() {
               />
               <span className="text-[#f0ebe2]/40">
                 Encrypted Finance brings confidential DeFi execution to public
-                chains.
+                chains. Trade, lend, and settle on-chain while your positions,
+                balances, and strategy stay fully confidential.
               </span>
             </h1>
-
-            <a
-              href="/chains"
-              className="mt-10 inline-flex h-10 items-center rounded-full bg-[#f0ebe2] px-7 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#111110] transition-opacity hover:opacity-85 sm:mt-12 sm:h-11 sm:px-9 sm:text-xs"
-            >
-              Get Started
-            </a>
           </div>
         </div>
       </div>
