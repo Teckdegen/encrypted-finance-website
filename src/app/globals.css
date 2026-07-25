@@ -73,8 +73,28 @@ html {
 
 /* Animated background grid */
 .bg-grid {
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+
+/* Confidential flow — traveling packet along a connector */
+@keyframes flow-packet {
+  0% { left: 0%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+.flow-packet {
+  animation: flow-packet 1.6s linear infinite;
+}
+
+/* Confidential receipt reveal */
+@keyframes confidential-reveal {
+  0% { opacity: 0; transform: translateY(8px); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.confidential-reveal {
+  animation: confidential-reveal 0.5s ease-out both;
 }

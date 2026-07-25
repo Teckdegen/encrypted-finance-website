@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { CoreIntro } from "@/components/CoreIntro";
 import { PrivacyPhilosophy } from "@/components/PrivacyPhilosophy";
-import { PrivacyComparison } from "@/components/PrivacyComparison";
+import { ConfidentialProtocols } from "@/components/ConfidentialProtocols";
 import { Community } from "@/components/Community";
 import { ClosingStatement } from "@/components/ClosingStatement";
 import { Navbar } from "@/components/Navbar";
@@ -16,7 +16,7 @@ export default function Home() {
         <div className="bg-background bg-grid">
           <CoreIntro />
           <PrivacyPhilosophy />
-          <PrivacyComparison />
+          <ConfidentialProtocols />
         </div>
         {/* Light sections */}
         <Community />
